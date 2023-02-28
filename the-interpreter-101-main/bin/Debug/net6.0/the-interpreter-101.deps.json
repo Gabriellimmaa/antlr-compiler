@@ -1,0 +1,41 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v6.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v6.0": {
+      "the-interpreter-101/1.0.0": {
+        "dependencies": {
+          "Antlr4.Runtime.Standard": "4.9.2"
+        },
+        "runtime": {
+          "the-interpreter-101.dll": {}
+        }
+      },
+      "Antlr4.Runtime.Standard/4.9.2": {
+        "runtime": {
+          "lib/netstandard2.0/Antlr4.Runtime.Standard.dll": {
+            "assemblyVersion": "4.9.2.0",
+            "fileVersion": "4.9.2.0"
+          }
+        }
+      }
+    }
+  },
+  "libraries": {
+    "the-interpreter-101/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Antlr4.Runtime.Standard/4.9.2": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-NH/CZeP56ERa+1w7HqlQKXMVBlkNHOWrjF3holW5XgUdyDP36Mw0SynoNj6jD7UNqhxc+4YYfOWXajO3U1Q2dw==",
+      "path": "antlr4.runtime.standard/4.9.2",
+      "hashPath": "antlr4.runtime.standard.4.9.2.nupkg.sha512"
+    }
+  }
+}

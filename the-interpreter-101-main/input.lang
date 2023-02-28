@@ -1,0 +1,15 @@
+function hello(){
+    write "Hello World";
+}
+
+function hello(str){
+    x = "Hello" + str;
+    write x;
+}
+
+write "Chamada de função";
+
+
+write hello("world");
+
+write "Fim da chamada de função";
