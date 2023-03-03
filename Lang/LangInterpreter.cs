@@ -24,8 +24,18 @@ namespace Interpreter.Lang
         public override object? VisitInputRead([NotNull] LangParser.InputReadContext context)
         {
             var input = Console.ReadLine();
-            if (!String.IsNullOrEmpty(input))
-                Variables[context.VAR().GetText()] = input;
+            var type = context.TYPE.Type;
+
+            if (type == LangLexer.INT) {
+                var y = 0;
+                if (int.TryParse(input, out y)){
+                     Variables[context.VAR().GetText()] = y;
+                } else {
+                    // matar a execução aqui
+                }
+            }
+            // if (!String.IsNullOrEmpty(input))
+            //     Variables[context.VAR().GetText()] = input;
             return null;
         }
 
@@ -127,6 +137,12 @@ namespace Interpreter.Lang
         {
             return Visit(context.expr());
         }
+
+        public override object VisitFactorStr([NotNull] LangParser.FactorStrContext context)
+        {
+            return context.STR().GetText().Replace("\"", string.Empty);
+        }
+
         #endregion
 
         #region Control Statements

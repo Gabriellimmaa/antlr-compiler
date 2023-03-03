@@ -1,0 +1,25 @@
+{
+    "version": "2.0.0",
+    "configurations": [
+    {
+        "name": ".NET Core Launch (console)",
+        "type": "coreclr",
+        "request": "launch",
+        "preLaunchTask": "build",
+        "program": "${workspaceFolder}/bin/Debug/net6.0/the-interpreter-101.dll>",
+        "args": [],
+        "cwd": "${workspaceFolder}",
+        "stopAtEntry": false,
+        "console": "internalConsole"
+    },
+        {
+        "name": "antlr4",
+        "type": "antlr-debug",
+        "request": "launch",
+        "input": "input.lang",
+        "grammar": "${file}",
+        "startRule": "prog",
+        "printParseTree": true,
+        "visualParseTree": true
+    }]
+}

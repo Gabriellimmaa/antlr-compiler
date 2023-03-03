@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-// Generated from c:\Users\della\projects\the-interpreter-101\Lang.g4 by ANTLR 4.9.2
+// Generated from Lang.g4 by ANTLR 4.9.2
 
 // Unreachable code detected
 #pragma warning disable 0162
@@ -302,5 +302,12 @@ public interface ILangVisitor<Result> : IParseTreeVisitor<Result> {
 	/// <param name="context">The parse tree.</param>
 	/// <return>The visitor result.</return>
 	Result VisitFactorNum([NotNull] LangParser.FactorNumContext context);
+	/// <summary>
+	/// Visit a parse tree produced by the <c>factorStr</c>
+	/// labeled alternative in <see cref="LangParser.factor"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	/// <return>The visitor result.</return>
+	Result VisitFactorStr([NotNull] LangParser.FactorStrContext context);
 }
 } // namespace Grammar

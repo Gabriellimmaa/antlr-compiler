@@ -15,3 +15,20 @@ C:\Users\carlo\OneDrive\Área de Trabalho\Programação\the-interpreter-101-main
 C:\Users\carlo\OneDrive\Área de Trabalho\Programação\the-interpreter-101-main\obj\Debug\net6.0\the-interpreter-101.pdb
 C:\Users\carlo\OneDrive\Área de Trabalho\Programação\the-interpreter-101-main\obj\Debug\net6.0\the-interpreter-101.genruntimeconfig.cache
 C:\Users\carlo\OneDrive\Área de Trabalho\Programação\the-interpreter-101-main\obj\Debug\net6.0\ref\the-interpreter-101.dll
+C:\Users\carlo\OneDrive\Documentos\GitHub\antlr-compiler\obj\Debug\net6.0\the-interpreter-101.csproj.AssemblyReference.cache
+C:\Users\carlo\OneDrive\Documentos\GitHub\antlr-compiler\obj\Debug\net6.0\the-interpreter-101.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\carlo\OneDrive\Documentos\GitHub\antlr-compiler\obj\Debug\net6.0\the-interpreter-101.AssemblyInfoInputs.cache
+C:\Users\carlo\OneDrive\Documentos\GitHub\antlr-compiler\obj\Debug\net6.0\the-interpreter-101.AssemblyInfo.cs
+C:\Users\carlo\OneDrive\Documentos\GitHub\antlr-compiler\obj\Debug\net6.0\the-interpreter-101.csproj.CoreCompileInputs.cache
+C:\Users\carlo\OneDrive\Documentos\GitHub\antlr-compiler\obj\Debug\net6.0\the-interpreter-101.dll
+C:\Users\carlo\OneDrive\Documentos\GitHub\antlr-compiler\obj\Debug\net6.0\refint\the-interpreter-101.dll
+C:\Users\carlo\OneDrive\Documentos\GitHub\antlr-compiler\obj\Debug\net6.0\the-interpreter-101.pdb
+C:\Users\carlo\OneDrive\Documentos\GitHub\antlr-compiler\bin\Debug\net6.0\the-interpreter-101.exe
+C:\Users\carlo\OneDrive\Documentos\GitHub\antlr-compiler\bin\Debug\net6.0\the-interpreter-101.deps.json
+C:\Users\carlo\OneDrive\Documentos\GitHub\antlr-compiler\bin\Debug\net6.0\the-interpreter-101.runtimeconfig.json
+C:\Users\carlo\OneDrive\Documentos\GitHub\antlr-compiler\bin\Debug\net6.0\the-interpreter-101.dll
+C:\Users\carlo\OneDrive\Documentos\GitHub\antlr-compiler\bin\Debug\net6.0\the-interpreter-101.pdb
+C:\Users\carlo\OneDrive\Documentos\GitHub\antlr-compiler\bin\Debug\net6.0\Antlr4.Runtime.Standard.dll
+C:\Users\carlo\OneDrive\Documentos\GitHub\antlr-compiler\obj\Debug\net6.0\the-interpreter-101.csproj.CopyComplete
+C:\Users\carlo\OneDrive\Documentos\GitHub\antlr-compiler\obj\Debug\net6.0\the-interpreter-101.genruntimeconfig.cache
+C:\Users\carlo\OneDrive\Documentos\GitHub\antlr-compiler\obj\Debug\net6.0\ref\the-interpreter-101.dll

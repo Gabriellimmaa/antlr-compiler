@@ -1,15 +1,5 @@
-function hello(){
-    write "Hello World";
-}
+string teste = "World";
 
-function hello(str){
-    x = "Hello" + str;
-    write x;
-}
-
-write "Chamada de função";
-
-
-write hello("world");
+write teste;
 
 write "Fim da chamada de função";

@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\carlo\\OneDrive\\Área de Trabalho\\Programação\\the-interpreter-101-main\\the-interpreter-101.csproj": {}
+    "C:\\Users\\carlo\\OneDrive\\Documentos\\GitHub\\antlr-compiler\\the-interpreter-101.csproj": {}
   },
   "projects": {
-    "C:\\Users\\carlo\\OneDrive\\Área de Trabalho\\Programação\\the-interpreter-101-main\\the-interpreter-101.csproj": {
+    "C:\\Users\\carlo\\OneDrive\\Documentos\\GitHub\\antlr-compiler\\the-interpreter-101.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\carlo\\OneDrive\\Área de Trabalho\\Programação\\the-interpreter-101-main\\the-interpreter-101.csproj",
+        "projectUniqueName": "C:\\Users\\carlo\\OneDrive\\Documentos\\GitHub\\antlr-compiler\\the-interpreter-101.csproj",
         "projectName": "the-interpreter-101",
-        "projectPath": "C:\\Users\\carlo\\OneDrive\\Área de Trabalho\\Programação\\the-interpreter-101-main\\the-interpreter-101.csproj",
+        "projectPath": "C:\\Users\\carlo\\OneDrive\\Documentos\\GitHub\\antlr-compiler\\the-interpreter-101.csproj",
         "packagesPath": "C:\\Users\\carlo\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\carlo\\OneDrive\\Área de Trabalho\\Programação\\the-interpreter-101-main\\obj\\",
+        "outputPath": "C:\\Users\\carlo\\OneDrive\\Documentos\\GitHub\\antlr-compiler\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\carlo\\AppData\\Roaming\\NuGet\\NuGet.Config"
