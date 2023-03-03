@@ -182,6 +182,18 @@ public interface ILangListener : IParseTreeListener {
 	/// <param name="context">The parse tree.</param>
 	void ExitLineFor([NotNull] LangParser.LineForContext context);
 	/// <summary>
+	/// Enter a parse tree produced by the <c>lineTernary</c>
+	/// labeled alternative in <see cref="LangParser.line"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	void EnterLineTernary([NotNull] LangParser.LineTernaryContext context);
+	/// <summary>
+	/// Exit a parse tree produced by the <c>lineTernary</c>
+	/// labeled alternative in <see cref="LangParser.line"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	void ExitLineTernary([NotNull] LangParser.LineTernaryContext context);
+	/// <summary>
 	/// Enter a parse tree produced by the <c>lineEOL</c>
 	/// labeled alternative in <see cref="LangParser.line"/>.
 	/// </summary>
@@ -193,6 +205,30 @@ public interface ILangListener : IParseTreeListener {
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
 	void ExitLineEOL([NotNull] LangParser.LineEOLContext context);
+	/// <summary>
+	/// Enter a parse tree produced by the <c>lineComment</c>
+	/// labeled alternative in <see cref="LangParser.line"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	void EnterLineComment([NotNull] LangParser.LineCommentContext context);
+	/// <summary>
+	/// Exit a parse tree produced by the <c>lineComment</c>
+	/// labeled alternative in <see cref="LangParser.line"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	void ExitLineComment([NotNull] LangParser.LineCommentContext context);
+	/// <summary>
+	/// Enter a parse tree produced by the <c>blockComment</c>
+	/// labeled alternative in <see cref="LangParser.line"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	void EnterBlockComment([NotNull] LangParser.BlockCommentContext context);
+	/// <summary>
+	/// Exit a parse tree produced by the <c>blockComment</c>
+	/// labeled alternative in <see cref="LangParser.line"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	void ExitBlockComment([NotNull] LangParser.BlockCommentContext context);
 	/// <summary>
 	/// Enter a parse tree produced by the <c>funcInvocLine</c>
 	/// labeled alternative in <see cref="LangParser.funcInvoc"/>.
@@ -278,6 +314,18 @@ public interface ILangListener : IParseTreeListener {
 	/// <param name="context">The parse tree.</param>
 	void ExitOutputWriteVar([NotNull] LangParser.OutputWriteVarContext context);
 	/// <summary>
+	/// Enter a parse tree produced by the <c>outputWriteFStr</c>
+	/// labeled alternative in <see cref="LangParser.output"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	void EnterOutputWriteFStr([NotNull] LangParser.OutputWriteFStrContext context);
+	/// <summary>
+	/// Exit a parse tree produced by the <c>outputWriteFStr</c>
+	/// labeled alternative in <see cref="LangParser.output"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	void ExitOutputWriteFStr([NotNull] LangParser.OutputWriteFStrContext context);
+	/// <summary>
 	/// Enter a parse tree produced by the <c>outputWriteStr</c>
 	/// labeled alternative in <see cref="LangParser.output"/>.
 	/// </summary>
@@ -325,6 +373,18 @@ public interface ILangListener : IParseTreeListener {
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
 	void ExitIfstIfElse([NotNull] LangParser.IfstIfElseContext context);
+	/// <summary>
+	/// Enter a parse tree produced by the <c>ternaryCond</c>
+	/// labeled alternative in <see cref="LangParser.ternary"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	void EnterTernaryCond([NotNull] LangParser.TernaryCondContext context);
+	/// <summary>
+	/// Exit a parse tree produced by the <c>ternaryCond</c>
+	/// labeled alternative in <see cref="LangParser.ternary"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	void ExitTernaryCond([NotNull] LangParser.TernaryCondContext context);
 	/// <summary>
 	/// Enter a parse tree produced by the <c>whilestWhile</c>
 	/// labeled alternative in <see cref="LangParser.whilest"/>.
@@ -434,6 +494,30 @@ public interface ILangListener : IParseTreeListener {
 	/// <param name="context">The parse tree.</param>
 	void ExitAtribVar([NotNull] LangParser.AtribVarContext context);
 	/// <summary>
+	/// Enter a parse tree produced by the <c>atribPlus</c>
+	/// labeled alternative in <see cref="LangParser.atrib"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	void EnterAtribPlus([NotNull] LangParser.AtribPlusContext context);
+	/// <summary>
+	/// Exit a parse tree produced by the <c>atribPlus</c>
+	/// labeled alternative in <see cref="LangParser.atrib"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	void ExitAtribPlus([NotNull] LangParser.AtribPlusContext context);
+	/// <summary>
+	/// Enter a parse tree produced by the <c>atribMinus</c>
+	/// labeled alternative in <see cref="LangParser.atrib"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	void EnterAtribMinus([NotNull] LangParser.AtribMinusContext context);
+	/// <summary>
+	/// Exit a parse tree produced by the <c>atribMinus</c>
+	/// labeled alternative in <see cref="LangParser.atrib"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	void ExitAtribMinus([NotNull] LangParser.AtribMinusContext context);
+	/// <summary>
 	/// Enter a parse tree produced by the <c>exprPlus</c>
 	/// labeled alternative in <see cref="LangParser.expr"/>.
 	/// </summary>
@@ -457,6 +541,18 @@ public interface ILangListener : IParseTreeListener {
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
 	void ExitExprMinus([NotNull] LangParser.ExprMinusContext context);
+	/// <summary>
+	/// Enter a parse tree produced by the <c>condTernary</c>
+	/// labeled alternative in <see cref="LangParser.expr"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	void EnterCondTernary([NotNull] LangParser.CondTernaryContext context);
+	/// <summary>
+	/// Exit a parse tree produced by the <c>condTernary</c>
+	/// labeled alternative in <see cref="LangParser.expr"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	void ExitCondTernary([NotNull] LangParser.CondTernaryContext context);
 	/// <summary>
 	/// Enter a parse tree produced by the <c>exprTerm</c>
 	/// labeled alternative in <see cref="LangParser.expr"/>.
@@ -530,6 +626,18 @@ public interface ILangListener : IParseTreeListener {
 	/// <param name="context">The parse tree.</param>
 	void ExitFactorVar([NotNull] LangParser.FactorVarContext context);
 	/// <summary>
+	/// Enter a parse tree produced by the <c>factorDecim</c>
+	/// labeled alternative in <see cref="LangParser.factor"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	void EnterFactorDecim([NotNull] LangParser.FactorDecimContext context);
+	/// <summary>
+	/// Exit a parse tree produced by the <c>factorDecim</c>
+	/// labeled alternative in <see cref="LangParser.factor"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	void ExitFactorDecim([NotNull] LangParser.FactorDecimContext context);
+	/// <summary>
 	/// Enter a parse tree produced by the <c>factorNum</c>
 	/// labeled alternative in <see cref="LangParser.factor"/>.
 	/// </summary>
@@ -541,6 +649,30 @@ public interface ILangListener : IParseTreeListener {
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
 	void ExitFactorNum([NotNull] LangParser.FactorNumContext context);
+	/// <summary>
+	/// Enter a parse tree produced by the <c>factorBoolTrue</c>
+	/// labeled alternative in <see cref="LangParser.factor"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	void EnterFactorBoolTrue([NotNull] LangParser.FactorBoolTrueContext context);
+	/// <summary>
+	/// Exit a parse tree produced by the <c>factorBoolTrue</c>
+	/// labeled alternative in <see cref="LangParser.factor"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	void ExitFactorBoolTrue([NotNull] LangParser.FactorBoolTrueContext context);
+	/// <summary>
+	/// Enter a parse tree produced by the <c>factorBoolFalse</c>
+	/// labeled alternative in <see cref="LangParser.factor"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	void EnterFactorBoolFalse([NotNull] LangParser.FactorBoolFalseContext context);
+	/// <summary>
+	/// Exit a parse tree produced by the <c>factorBoolFalse</c>
+	/// labeled alternative in <see cref="LangParser.factor"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	void ExitFactorBoolFalse([NotNull] LangParser.FactorBoolFalseContext context);
 	/// <summary>
 	/// Enter a parse tree produced by the <c>factorStr</c>
 	/// labeled alternative in <see cref="LangParser.factor"/>.

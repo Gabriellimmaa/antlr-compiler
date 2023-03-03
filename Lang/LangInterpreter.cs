@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using System.Text.RegularExpressions;
 using Antlr4.Runtime.Misc;
 using Antlr4.Runtime.Tree;
 using Grammar;
@@ -63,6 +64,32 @@ namespace Interpreter.Lang
                 Console.WriteLine(v);
             return null;
         }
+
+        public override object? VisitOutputWriteFStr([NotNull] LangParser.OutputWriteFStrContext context)
+        {
+
+            List<string> blocks = new List<string>();
+            var strContent = context.STR().GetText();
+            Regex regex = new Regex(@"\$\{(.+?)\}");
+            MatchCollection matches = regex.Matches(strContent);
+            int i = 0;
+            foreach (Match match in matches)
+            {
+                strContent = strContent.Replace(match.Value, "{" + i + "}");
+                i++;
+                var varName = match.Groups[1].Value;
+                if (Variables.ContainsKey(varName))
+                    blocks.Add(Variables[varName].ToString());
+                else {
+                    Console.WriteLine("Variable " + varName + " is not defined");
+                    return null;
+                }
+            }
+            string mensagemFormatada = String.Format(strContent, blocks.ToArray());
+            Console.WriteLine(mensagemFormatada.Replace("\"", ""));
+           
+            return null;
+        }
         #endregion
 
         #region Variable and Expression Statements
@@ -80,6 +107,28 @@ namespace Interpreter.Lang
             var varName = context.VAR().GetText();
             object? v = Visit(context.expr());
             Variables[varName] = v;
+            return null;
+        }
+
+        public override object? VisitAtribPlus([NotNull] LangParser.AtribPlusContext context)
+        {
+            var varName = context.VAR().GetText();
+            if(Variables.ContainsKey(varName)){
+                Variables[varName] = (double)Variables[varName] + (double)Visit(context.expr());
+            }else {
+                Console.WriteLine("Variable " + varName + " is not defined");
+            }
+            return null;
+        }
+
+        public override object? VisitAtribMinus([NotNull] LangParser.AtribMinusContext context)
+        {
+            var varName = context.VAR().GetText();
+            if(Variables.ContainsKey(varName)){
+                Variables[varName] = (double)Variables[varName] - (double)Visit(context.expr());
+            }else {
+                Console.WriteLine("Variable " + varName + " is not defined");
+            }
             return null;
         }
 
@@ -154,11 +203,31 @@ namespace Interpreter.Lang
             return null;
         }
 
+        public override object VisitForstFor([NotNull] LangParser.ForstForContext context)
+        {
+            var varName = context.VAR().GetText();
+            if(Variables.ContainsKey(varName)){
+                var cond = Visit(context.cond());
+                while (cond != null && (bool)cond)
+                {
+                    Visit(context.block());
+                    Visit(context.atrib());
+                    cond = Visit(context.cond());
+                }
+            }else {
+                Console.WriteLine("Variable " + varName + " is not defined");
+            }
+            return null;
+        }
+
         public override object VisitWhilestWhile([NotNull] LangParser.WhilestWhileContext context)
         {
             var cond = Visit(context.cond());
             while (cond != null && (bool)cond)
+            {
                 Visit(context.block());
+                cond = Visit(context.cond());
+            }
             return null;
         }
 
@@ -172,6 +241,30 @@ namespace Interpreter.Lang
             return null;
         }
 
+        public override object VisitTernaryCond([NotNull] LangParser.TernaryCondContext context)
+        {
+            var cond = Visit(context.cond());
+            if (cond != null && (bool)cond) {
+                string? str = context.e1.ToString();
+                string pattern = "\"([^\"]*)\"";
+                Match match = Regex.Match(str, pattern);
+                if (match.Success) {
+                    string result = match.Groups[1].Value;
+                    Console.WriteLine(result); // saída: fail
+                }
+            }
+            else{
+                string? str = context.e2.ToString();
+                string pattern = "\"([^\"]*)\"";
+                Match match = Regex.Match(str, pattern);
+                if (match.Success) {
+                    string result = match.Groups[1].Value;
+                    Console.WriteLine(result); // saída: fail
+                }
+            }
+            return null;
+        }
+
         public override object? VisitCondExpr([NotNull] LangParser.CondExprContext context)
         {
             object? v = Visit(context.expr()); 
@@ -180,6 +273,7 @@ namespace Interpreter.Lang
 
         public override object? VisitCondRelop([NotNull] LangParser.CondRelopContext context)
         {
+
             var d = GetDoubles(context.e1, context.e2);
             switch (context.RELOP.Type)
             {
