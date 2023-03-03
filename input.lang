@@ -5,7 +5,9 @@ regra para comentarios em bloco
 // regra para comentarios em linha
 
 // regra de atribuicao para int, double, string, boolean
+//int teste_int = (10+5)/2;
 int teste_int = 1;
+write f"teste_int: ${teste_int}";
 string teste_string = "hello della";
 
 // regra para concatenar variaveis a string
@@ -53,3 +55,4 @@ comentario de codigo em linha e bloco
 codições
 if e if else
 */
+
