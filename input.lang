@@ -1,5 +1,0 @@
-string teste = "World";
-
-write teste;
-
-write "Fim da chamada de função";

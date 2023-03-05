@@ -158,6 +158,30 @@ public interface ILangListener : IParseTreeListener {
 	/// <param name="context">The parse tree.</param>
 	void ExitLineIf([NotNull] LangParser.LineIfContext context);
 	/// <summary>
+	/// Enter a parse tree produced by the <c>lineWhile</c>
+	/// labeled alternative in <see cref="LangParser.line"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	void EnterLineWhile([NotNull] LangParser.LineWhileContext context);
+	/// <summary>
+	/// Exit a parse tree produced by the <c>lineWhile</c>
+	/// labeled alternative in <see cref="LangParser.line"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	void ExitLineWhile([NotNull] LangParser.LineWhileContext context);
+	/// <summary>
+	/// Enter a parse tree produced by the <c>lineFor</c>
+	/// labeled alternative in <see cref="LangParser.line"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	void EnterLineFor([NotNull] LangParser.LineForContext context);
+	/// <summary>
+	/// Exit a parse tree produced by the <c>lineFor</c>
+	/// labeled alternative in <see cref="LangParser.line"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	void ExitLineFor([NotNull] LangParser.LineForContext context);
+	/// <summary>
 	/// Enter a parse tree produced by the <c>lineEOL</c>
 	/// labeled alternative in <see cref="LangParser.line"/>.
 	/// </summary>
@@ -301,6 +325,30 @@ public interface ILangListener : IParseTreeListener {
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
 	void ExitIfstIfElse([NotNull] LangParser.IfstIfElseContext context);
+	/// <summary>
+	/// Enter a parse tree produced by the <c>whilestWhile</c>
+	/// labeled alternative in <see cref="LangParser.whilest"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	void EnterWhilestWhile([NotNull] LangParser.WhilestWhileContext context);
+	/// <summary>
+	/// Exit a parse tree produced by the <c>whilestWhile</c>
+	/// labeled alternative in <see cref="LangParser.whilest"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	void ExitWhilestWhile([NotNull] LangParser.WhilestWhileContext context);
+	/// <summary>
+	/// Enter a parse tree produced by the <c>forstFor</c>
+	/// labeled alternative in <see cref="LangParser.forst"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	void EnterForstFor([NotNull] LangParser.ForstForContext context);
+	/// <summary>
+	/// Exit a parse tree produced by the <c>forstFor</c>
+	/// labeled alternative in <see cref="LangParser.forst"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	void ExitForstFor([NotNull] LangParser.ForstForContext context);
 	/// <summary>
 	/// Enter a parse tree produced by the <c>blockLine</c>
 	/// labeled alternative in <see cref="LangParser.block"/>.

@@ -154,6 +154,14 @@ namespace Interpreter.Lang
             return null;
         }
 
+        public override object VisitWhilestWhile([NotNull] LangParser.WhilestWhileContext context)
+        {
+            var cond = Visit(context.cond());
+            while (cond != null && (bool)cond)
+                Visit(context.block());
+            return null;
+        }
+
         public override object? VisitIfstIfElse([NotNull] LangParser.IfstIfElseContext context)
         {
             var cond = Visit(context.cond());

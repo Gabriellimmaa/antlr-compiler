@@ -30,8 +30,8 @@ params:
 line:
 	  stmt EOL          # lineStmt
 	| ifst              # lineIf
-	//| whilest         # lineWhile
-    //| forst           # lineFor
+	| whilest         # lineWhile
+    | forst           # lineFor
 	| EOL              # lineEOL
     ;
 
@@ -61,6 +61,13 @@ ifst:
 	| IF '(' cond ')' THEN b1=block ELSE b2=block # ifstIfElse
     ;
 
+whilest:
+    WHILE '(' cond ')' THEN block #whilestWhile
+;
+
+forst:
+    FOR '(' cond ')' THEN block #forstFor
+;
 
 block:
      '{' line+ '}'                # blockLine
@@ -135,7 +142,7 @@ DOUBLE:[dD][oO][uU][bB][lL][eE];
 STRING:[sS][tT][rR][iI][nN][gG];
 STR: '"' ~["]* '"';
 EOL: ';';
-NUM: [0-9];
+NUM: [0-9]|[0-9][0-9]|[0-9][0-9][0-9]|[0-9][0-9][0-9][0-9];
 DECIM: [0-9]+ (.([0-9]+))?;
 VAR: [a-zA-Z_][a-zA-Z0-9_]*;
 COMMENT: '//' ~[\r\n]* -> skip;

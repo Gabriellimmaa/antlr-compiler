@@ -185,6 +185,34 @@ public partial class LangBaseListener : ILangListener {
 	/// <param name="context">The parse tree.</param>
 	public virtual void ExitLineIf([NotNull] LangParser.LineIfContext context) { }
 	/// <summary>
+	/// Enter a parse tree produced by the <c>lineWhile</c>
+	/// labeled alternative in <see cref="LangParser.line"/>.
+	/// <para>The default implementation does nothing.</para>
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	public virtual void EnterLineWhile([NotNull] LangParser.LineWhileContext context) { }
+	/// <summary>
+	/// Exit a parse tree produced by the <c>lineWhile</c>
+	/// labeled alternative in <see cref="LangParser.line"/>.
+	/// <para>The default implementation does nothing.</para>
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	public virtual void ExitLineWhile([NotNull] LangParser.LineWhileContext context) { }
+	/// <summary>
+	/// Enter a parse tree produced by the <c>lineFor</c>
+	/// labeled alternative in <see cref="LangParser.line"/>.
+	/// <para>The default implementation does nothing.</para>
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	public virtual void EnterLineFor([NotNull] LangParser.LineForContext context) { }
+	/// <summary>
+	/// Exit a parse tree produced by the <c>lineFor</c>
+	/// labeled alternative in <see cref="LangParser.line"/>.
+	/// <para>The default implementation does nothing.</para>
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	public virtual void ExitLineFor([NotNull] LangParser.LineForContext context) { }
+	/// <summary>
 	/// Enter a parse tree produced by the <c>lineEOL</c>
 	/// labeled alternative in <see cref="LangParser.line"/>.
 	/// <para>The default implementation does nothing.</para>
@@ -352,6 +380,34 @@ public partial class LangBaseListener : ILangListener {
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
 	public virtual void ExitIfstIfElse([NotNull] LangParser.IfstIfElseContext context) { }
+	/// <summary>
+	/// Enter a parse tree produced by the <c>whilestWhile</c>
+	/// labeled alternative in <see cref="LangParser.whilest"/>.
+	/// <para>The default implementation does nothing.</para>
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	public virtual void EnterWhilestWhile([NotNull] LangParser.WhilestWhileContext context) { }
+	/// <summary>
+	/// Exit a parse tree produced by the <c>whilestWhile</c>
+	/// labeled alternative in <see cref="LangParser.whilest"/>.
+	/// <para>The default implementation does nothing.</para>
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	public virtual void ExitWhilestWhile([NotNull] LangParser.WhilestWhileContext context) { }
+	/// <summary>
+	/// Enter a parse tree produced by the <c>forstFor</c>
+	/// labeled alternative in <see cref="LangParser.forst"/>.
+	/// <para>The default implementation does nothing.</para>
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	public virtual void EnterForstFor([NotNull] LangParser.ForstForContext context) { }
+	/// <summary>
+	/// Exit a parse tree produced by the <c>forstFor</c>
+	/// labeled alternative in <see cref="LangParser.forst"/>.
+	/// <para>The default implementation does nothing.</para>
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	public virtual void ExitForstFor([NotNull] LangParser.ForstForContext context) { }
 	/// <summary>
 	/// Enter a parse tree produced by the <c>blockLine</c>
 	/// labeled alternative in <see cref="LangParser.block"/>.
