@@ -1,1 +1,2 @@
-double teste = 2.3 + 2.5;
+double teste = 2.1 + 2.1 + 2;
+write teste;
