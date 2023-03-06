@@ -34,6 +34,13 @@ namespace Interpreter.Lang
             Variables.Add(varName, LangLexer.STR);
         }
 
+        // public override void ExitAtribDecim([NotNull] LangParser.AtribDecimContext context)
+        // {
+        //     var varName = context.VAR().GetText();
+        //     Variables.Add(varName, LangLexer.DECIM);
+        // }
+
+
         public override void ExitOutputWriteVar([NotNull] LangParser.OutputWriteVarContext context)
         {
             var varName = context.VAR().GetText();

@@ -1,2 +1,1 @@
-int teste = 2;
-write teste;
+double teste = 2.3 + 2.5;

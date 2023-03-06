@@ -6,6 +6,7 @@ using System.Text.RegularExpressions;
 using Antlr4.Runtime.Misc;
 using Antlr4.Runtime.Tree;
 using Grammar;
+using System.Globalization;
 
 namespace Interpreter.Lang
 {
@@ -26,6 +27,27 @@ namespace Interpreter.Lang
 
             public Valuable(int _type, object? _value) {
                 type = _type;
+                value = _value;
+            }
+            
+            
+            public int GetType()
+            {
+                return type;
+            }
+
+            public object? GetValue()
+            {
+                return value;
+            }
+
+            public void SetType(int _type)
+            {
+                type = _type;
+            }
+
+            public void SetValue(object? _value)
+            {
                 value = _value;
             }
         }
@@ -53,8 +75,9 @@ namespace Interpreter.Lang
         public override object? VisitOutputWriteVar([NotNull] LangParser.OutputWriteVarContext context)
         {
             var varName = context.VAR().GetText();
-            if (Variables.ContainsKey(varName))
-                Console.WriteLine(Variables[varName]);
+            if (Variables.ContainsKey(varName)){
+                Console.WriteLine(((Valuable)Variables[varName]).GetValue());
+            }
             else
                 Console.WriteLine("Variable " + varName + " is not defined");
             return null;
@@ -105,21 +128,37 @@ namespace Interpreter.Lang
         #region Variable and Expression Statements
         protected (Double, Double) GetDoubles(IParseTree tree1, IParseTree tree2)
         {
-            var t1 = Visit(tree1);
-            var t2 = Visit(tree2);
-            Double.TryParse(t1?.ToString(), out var d1);
-            Double.TryParse(t2?.ToString(), out var d2);
+            var t1 = (Valuable)Visit(tree1);
+            var t2 = (Valuable)Visit(tree2);
+            Double.TryParse(t1.GetValue().ToString(), out var d1);
+            Double.TryParse(t2.GetValue().ToString(), out var d2);
             return (d1, d2);
         }
+
+        // public override object? VisitAtribDecim([NotNull] LangParser.AtribDecimContext context)
+        // {
+        //     var txtNum = context.DECIM().GetText();
+        //     var varName = context.VAR().GetText();
+        //     var v = new Valuable(LangLexer.DOUBLE, double.Parse(txtNum,CultureInfo.InvariantCulture));
+        //     Variables[varName] = v;
+        //     return v;
+        // }
 
         public override object? VisitAtribVar([NotNull] LangParser.AtribVarContext context)
         {
             var varName = context.VAR().GetText();
             var varType = context.TYPE.Type;
-            Valuable v = new Valuable();
-            v = (Valuable)Visit(context.expr());
-            
-            Variables[varName] = v.value;
+            var varValue = Visit(context.expr());
+            if(varType == LangLexer.DOUBLE) {
+                Console.WriteLine(varValue);
+                // var newVarValue = double.Parse(varValue, CultureInfo.InvariantCulture);
+                // var vStruct = new Valuable(varType, newVarValue);
+                // Variables[varName] = vStruct;
+            }
+            if(varType == LangLexer.INT) {
+                var vStruct = new Valuable(varType, varValue);
+                Variables[varName] = vStruct;
+            }
             return null;
         }
 
@@ -134,10 +173,22 @@ namespace Interpreter.Lang
         public override object? VisitAtribPlus([NotNull] LangParser.AtribPlusContext context)
         {
             var varName = context.VAR().GetText();
-            if(Variables.ContainsKey(varName)){
-                Variables[varName] = (double)Variables[varName] + (double)Visit(context.expr());
-            }else {
+            if(!Variables.ContainsKey(varName)){
                 Console.WriteLine("Variable " + varName + " is not defined");
+                return null;
+            }
+
+            var varStruct = (Valuable)Variables[varName];
+            var value = varStruct.GetValue();
+            var type = varStruct.GetType();
+            if(type == LangLexer.DECIM) {
+                varStruct.SetValue((double)value + (double)Visit(context.expr()));
+            }
+            if(type == LangLexer.INT) {
+                int value1 = (int)((Valuable)Visit(context.expr())).GetValue();
+                int value2 = (int)value;
+                int result = value1 + value2;
+                varStruct.SetValue(result);
             }
             return null;
         }
@@ -200,8 +251,21 @@ namespace Interpreter.Lang
         public override object? VisitFactorNum([NotNull] LangParser.FactorNumContext context)
         {
             var txtNum = context.NUM().GetText();
-            return new Valuable(LangLexer.DOUBLE, Double.Parse(txtNum));
+            return new Valuable(LangLexer.INT, Int32.Parse(txtNum));
         }
+
+        public override object? VisitFactorDecim([NotNull] LangParser.FactorDecimContext context)
+        {
+            var txtNum = context.DECIM().GetText();
+            return new Valuable(LangLexer.INT, Double.Parse(txtNum, CultureInfo.InvariantCulture));
+        }
+
+        // public override object VisitFactorDecim([NotNull] LangParser.FactorDecimContext context)
+        // {
+        //     var txtNum = context.DECIM().GetText();
+        //     Console.WriteLine(double.Parse(txtNum,CultureInfo.InvariantCulture));
+        //     return new Valuable(LangLexer.DOUBLE, double.Parse(txtNum,CultureInfo.InvariantCulture));
+        // }
 
         public override object? VisitFactorExpr([NotNull] LangParser.FactorExprContext context)
         {
