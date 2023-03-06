@@ -128,11 +128,25 @@ namespace Interpreter.Lang
         #region Variable and Expression Statements
         protected (Double, Double) GetDoubles(IParseTree tree1, IParseTree tree2)
         {
-            var t1 = (Valuable)Visit(tree1);
-            var t2 = (Valuable)Visit(tree2);
-            Double.TryParse(t1.GetValue().ToString(), out var d1);
-            Double.TryParse(t2.GetValue().ToString(), out var d2);
-            return (d1, d2);
+            var t1 = Visit(tree1);
+            var t2 = Visit(tree2);
+            if(t1 is Valuable && t2 is Valuable) {
+                Double.TryParse(((Valuable)t1).GetValue().ToString(), out var d1);
+                Double.TryParse(((Valuable)t2).GetValue().ToString(), out var d2);
+                return (d1, d2);
+            }else if (t1 is Valuable && t2 is not Valuable) {
+                Double.TryParse(((Valuable)t1).GetValue().ToString(), out var d1);
+                Double.TryParse(t2.ToString(), out var d2);
+                return (d1, d2);
+            }else if (t1 is not Valuable && t2 is Valuable) {
+                Double.TryParse(t1.ToString(), out var d1);
+                Double.TryParse(((Valuable)t2).GetValue().ToString(), out var d2);
+                return (d1, d2);
+            }else {
+                Double.TryParse(t1.ToString(), out var d1);
+                Double.TryParse(t2.ToString(), out var d2);
+                return (d1, d2);
+            }
         }
 
         // public override object? VisitAtribDecim([NotNull] LangParser.AtribDecimContext context)
@@ -150,10 +164,8 @@ namespace Interpreter.Lang
             var varType = context.TYPE.Type;
             var varValue = Visit(context.expr());
             if(varType == LangLexer.DOUBLE) {
-                Console.WriteLine(varValue);
-                // var newVarValue = double.Parse(varValue, CultureInfo.InvariantCulture);
-                // var vStruct = new Valuable(varType, newVarValue);
-                // Variables[varName] = vStruct;
+                var vStruct = new Valuable(varType, varValue);
+                Variables[varName] = vStruct;
             }
             if(varType == LangLexer.INT) {
                 var vStruct = new Valuable(varType, varValue);
@@ -335,7 +347,7 @@ namespace Interpreter.Lang
                 Match match = Regex.Match(str, pattern);
                 if (match.Success) {
                     string result = match.Groups[1].Value;
-                    Console.WriteLine(result); // saída: fail
+                    Console.WriteLine(result);
                 }
             }
             else{
@@ -344,7 +356,7 @@ namespace Interpreter.Lang
                 Match match = Regex.Match(str, pattern);
                 if (match.Success) {
                     string result = match.Groups[1].Value;
-                    Console.WriteLine(result); // saída: fail
+                    Console.WriteLine(result);
                 }
             }
             return null;
