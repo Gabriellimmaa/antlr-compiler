@@ -194,6 +194,18 @@ public interface ILangListener : IParseTreeListener {
 	/// <param name="context">The parse tree.</param>
 	void ExitLineTernary([NotNull] LangParser.LineTernaryContext context);
 	/// <summary>
+	/// Enter a parse tree produced by the <c>lineArray</c>
+	/// labeled alternative in <see cref="LangParser.line"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	void EnterLineArray([NotNull] LangParser.LineArrayContext context);
+	/// <summary>
+	/// Exit a parse tree produced by the <c>lineArray</c>
+	/// labeled alternative in <see cref="LangParser.line"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	void ExitLineArray([NotNull] LangParser.LineArrayContext context);
+	/// <summary>
 	/// Enter a parse tree produced by the <c>lineEOL</c>
 	/// labeled alternative in <see cref="LangParser.line"/>.
 	/// </summary>
@@ -410,6 +422,30 @@ public interface ILangListener : IParseTreeListener {
 	/// <param name="context">The parse tree.</param>
 	void ExitForstFor([NotNull] LangParser.ForstForContext context);
 	/// <summary>
+	/// Enter a parse tree produced by the <c>atribArrayNumber</c>
+	/// labeled alternative in <see cref="LangParser.array"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	void EnterAtribArrayNumber([NotNull] LangParser.AtribArrayNumberContext context);
+	/// <summary>
+	/// Exit a parse tree produced by the <c>atribArrayNumber</c>
+	/// labeled alternative in <see cref="LangParser.array"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	void ExitAtribArrayNumber([NotNull] LangParser.AtribArrayNumberContext context);
+	/// <summary>
+	/// Enter a parse tree produced by the <c>atribArrayString</c>
+	/// labeled alternative in <see cref="LangParser.array"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	void EnterAtribArrayString([NotNull] LangParser.AtribArrayStringContext context);
+	/// <summary>
+	/// Exit a parse tree produced by the <c>atribArrayString</c>
+	/// labeled alternative in <see cref="LangParser.array"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	void ExitAtribArrayString([NotNull] LangParser.AtribArrayStringContext context);
+	/// <summary>
 	/// Enter a parse tree produced by the <c>blockLine</c>
 	/// labeled alternative in <see cref="LangParser.block"/>.
 	/// </summary>
@@ -613,6 +649,30 @@ public interface ILangListener : IParseTreeListener {
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
 	void ExitTermFactor([NotNull] LangParser.TermFactorContext context);
+	/// <summary>
+	/// Enter a parse tree produced by the <c>array_number</c>
+	/// labeled alternative in <see cref="LangParser.factor_array_number"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	void EnterArray_number([NotNull] LangParser.Array_numberContext context);
+	/// <summary>
+	/// Exit a parse tree produced by the <c>array_number</c>
+	/// labeled alternative in <see cref="LangParser.factor_array_number"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	void ExitArray_number([NotNull] LangParser.Array_numberContext context);
+	/// <summary>
+	/// Enter a parse tree produced by the <c>array_string</c>
+	/// labeled alternative in <see cref="LangParser.factor_array_string"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	void EnterArray_string([NotNull] LangParser.Array_stringContext context);
+	/// <summary>
+	/// Exit a parse tree produced by the <c>array_string</c>
+	/// labeled alternative in <see cref="LangParser.factor_array_string"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	void ExitArray_string([NotNull] LangParser.Array_stringContext context);
 	/// <summary>
 	/// Enter a parse tree produced by the <c>factorExpr</c>
 	/// labeled alternative in <see cref="LangParser.factor"/>.

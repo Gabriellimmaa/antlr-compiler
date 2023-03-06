@@ -128,6 +128,13 @@ public interface ILangVisitor<Result> : IParseTreeVisitor<Result> {
 	/// <return>The visitor result.</return>
 	Result VisitLineTernary([NotNull] LangParser.LineTernaryContext context);
 	/// <summary>
+	/// Visit a parse tree produced by the <c>lineArray</c>
+	/// labeled alternative in <see cref="LangParser.line"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	/// <return>The visitor result.</return>
+	Result VisitLineArray([NotNull] LangParser.LineArrayContext context);
+	/// <summary>
 	/// Visit a parse tree produced by the <c>lineEOL</c>
 	/// labeled alternative in <see cref="LangParser.line"/>.
 	/// </summary>
@@ -254,6 +261,20 @@ public interface ILangVisitor<Result> : IParseTreeVisitor<Result> {
 	/// <return>The visitor result.</return>
 	Result VisitForstFor([NotNull] LangParser.ForstForContext context);
 	/// <summary>
+	/// Visit a parse tree produced by the <c>atribArrayNumber</c>
+	/// labeled alternative in <see cref="LangParser.array"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	/// <return>The visitor result.</return>
+	Result VisitAtribArrayNumber([NotNull] LangParser.AtribArrayNumberContext context);
+	/// <summary>
+	/// Visit a parse tree produced by the <c>atribArrayString</c>
+	/// labeled alternative in <see cref="LangParser.array"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	/// <return>The visitor result.</return>
+	Result VisitAtribArrayString([NotNull] LangParser.AtribArrayStringContext context);
+	/// <summary>
 	/// Visit a parse tree produced by the <c>blockLine</c>
 	/// labeled alternative in <see cref="LangParser.block"/>.
 	/// </summary>
@@ -372,6 +393,20 @@ public interface ILangVisitor<Result> : IParseTreeVisitor<Result> {
 	/// <param name="context">The parse tree.</param>
 	/// <return>The visitor result.</return>
 	Result VisitTermFactor([NotNull] LangParser.TermFactorContext context);
+	/// <summary>
+	/// Visit a parse tree produced by the <c>array_number</c>
+	/// labeled alternative in <see cref="LangParser.factor_array_number"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	/// <return>The visitor result.</return>
+	Result VisitArray_number([NotNull] LangParser.Array_numberContext context);
+	/// <summary>
+	/// Visit a parse tree produced by the <c>array_string</c>
+	/// labeled alternative in <see cref="LangParser.factor_array_string"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	/// <return>The visitor result.</return>
+	Result VisitArray_string([NotNull] LangParser.Array_stringContext context);
 	/// <summary>
 	/// Visit a parse tree produced by the <c>factorExpr</c>
 	/// labeled alternative in <see cref="LangParser.factor"/>.

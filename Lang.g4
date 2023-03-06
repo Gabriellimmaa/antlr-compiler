@@ -33,6 +33,7 @@
         | whilest         # lineWhile
         | forst           # lineFor
         | ternary EOL     # lineTernary
+        | array EOL       # lineArray
         | EOL              # lineEOL
         | COMMENT_LINE           # lineComment
         | COMMENT_BLOCK           # blockComment
@@ -54,7 +55,7 @@
         ;    
     
     output: 
-        WRITE VAR           # outputWriteVar
+        WRITE VAR POSITION?              # outputWriteVar
         | WRITE 'f'STR      # outputWriteFStr
         | WRITE STR         # outputWriteStr
         | WRITE expr        # outputWriteExpr
@@ -75,6 +76,11 @@
 
     forst:
         FOR '(' VAR EOL cond EOL atrib ')' block #forstFor
+    ;
+
+    array:
+        ARRAY'<'TYPE=(INT|DOUBLE)'>' VAR AT factor_array_number # atribArrayNumber
+        | ARRAY'<'STRING'>' VAR AT factor_array_string # atribArrayString
     ;
 
     block:
@@ -108,7 +114,15 @@
         factor MULT term       # termMult
         | factor DIV term       # termDiv
         | factor                # termFactor
-        ;           
+        ;       
+
+    factor_array_number:
+        '[' (factor) (',' (factor))* ']' # array_number
+    ;
+
+    factor_array_string:
+        '[' (STR) (',' (STR))* ']' # array_string
+    ;
 
     factor: 
         '(' expr ')'           # factorExpr
@@ -158,11 +172,16 @@
     DOUBLE:[dD][oO][uU][bB][lL][eE];
     STRING:[sS][tT][rR][iI][nN][gG];
     BOOLEAN:[bB][oO][oO][lL][eE][aA][nN];
+    ARRAY: [aA][rR][rR][aA][yY];
+    ARRAY_INT: [aA][rR][rR][aA][yY] '<' [iI][nN][tT] '>';
+    ARRAY_DOUBLE: [aA][rR][rR][aA][yY] '<' [dD][oO][uU][bB][lL][eE] '>';
+    ARRAY_STRING: [aA][rR][rR][aA][yY] '<' [sS][tT][rR][iI][nN][gG] '>';
     STR: '"' ~["]* '"';
     EOL: ';';
     NUM: '-'? [0-9]+;
     DECIM: '-'? [0-9]+ ('.' [0-9]+)? | '-'? '.' [0-9]+;
     VAR: [a-zA-Z_][a-zA-Z0-9_]*;
+    POSITION: '['[0-9]+']';
     COMMENT_LINE: '//' ~[\r\n]* -> skip;
     COMMENT_BLOCK: '/*' .*? '*/' -> skip;
     WS: [ \t\n\r]+ -> skip;
