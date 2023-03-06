@@ -1,31 +1,25 @@
 {
   "format": 1,
   "restore": {
-    "C:\\xampp\\htdocs\\antlr-compiler\\the-interpreter-101.csproj": {}
+    "C:\\Users\\carlo\\OneDrive\\Documentos\\GitHub\\antlr-compiler\\the-interpreter-101.csproj": {}
   },
   "projects": {
-    "C:\\xampp\\htdocs\\antlr-compiler\\the-interpreter-101.csproj": {
+    "C:\\Users\\carlo\\OneDrive\\Documentos\\GitHub\\antlr-compiler\\the-interpreter-101.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\xampp\\htdocs\\antlr-compiler\\the-interpreter-101.csproj",
+        "projectUniqueName": "C:\\Users\\carlo\\OneDrive\\Documentos\\GitHub\\antlr-compiler\\the-interpreter-101.csproj",
         "projectName": "the-interpreter-101",
-        "projectPath": "C:\\xampp\\htdocs\\antlr-compiler\\the-interpreter-101.csproj",
-        "packagesPath": "C:\\Users\\limaamaro\\.nuget\\packages\\",
-        "outputPath": "C:\\xampp\\htdocs\\antlr-compiler\\obj\\",
+        "projectPath": "C:\\Users\\carlo\\OneDrive\\Documentos\\GitHub\\antlr-compiler\\the-interpreter-101.csproj",
+        "packagesPath": "C:\\Users\\carlo\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\carlo\\OneDrive\\Documentos\\GitHub\\antlr-compiler\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-        ],
         "configFilePaths": [
-          "C:\\Users\\limaamaro\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+          "C:\\Users\\carlo\\AppData\\Roaming\\NuGet\\NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net6.0"
         ],
         "sources": {
-          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -55,7 +49,8 @@
             "net47",
             "net471",
             "net472",
-            "net48"
+            "net48",
+            "net481"
           ],
           "assetTargetFallback": true,
           "warn": true,
@@ -64,7 +59,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.309\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.402\\RuntimeIdentifierGraph.json"
         }
       }
     }

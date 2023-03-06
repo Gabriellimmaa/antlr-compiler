@@ -451,6 +451,17 @@ public partial class LangBaseVisitor<Result> : AbstractParseTreeVisitor<Result>,
 	/// <return>The visitor result.</return>
 	public virtual Result VisitCondNot([NotNull] LangParser.CondNotContext context) { return VisitChildren(context); }
 	/// <summary>
+	/// Visit a parse tree produced by the <c>atribString</c>
+	/// labeled alternative in <see cref="LangParser.atrib"/>.
+	/// <para>
+	/// The default implementation returns the result of calling <see cref="AbstractParseTreeVisitor{Result}.VisitChildren(IRuleNode)"/>
+	/// on <paramref name="context"/>.
+	/// </para>
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	/// <return>The visitor result.</return>
+	public virtual Result VisitAtribString([NotNull] LangParser.AtribStringContext context) { return VisitChildren(context); }
+	/// <summary>
 	/// Visit a parse tree produced by the <c>atribVar</c>
 	/// labeled alternative in <see cref="LangParser.atrib"/>.
 	/// <para>
@@ -626,16 +637,5 @@ public partial class LangBaseVisitor<Result> : AbstractParseTreeVisitor<Result>,
 	/// <param name="context">The parse tree.</param>
 	/// <return>The visitor result.</return>
 	public virtual Result VisitFactorBoolFalse([NotNull] LangParser.FactorBoolFalseContext context) { return VisitChildren(context); }
-	/// <summary>
-	/// Visit a parse tree produced by the <c>factorStr</c>
-	/// labeled alternative in <see cref="LangParser.factor"/>.
-	/// <para>
-	/// The default implementation returns the result of calling <see cref="AbstractParseTreeVisitor{Result}.VisitChildren(IRuleNode)"/>
-	/// on <paramref name="context"/>.
-	/// </para>
-	/// </summary>
-	/// <param name="context">The parse tree.</param>
-	/// <return>The visitor result.</return>
-	public virtual Result VisitFactorStr([NotNull] LangParser.FactorStrContext context) { return VisitChildren(context); }
 }
 } // namespace Grammar

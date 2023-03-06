@@ -1,4 +1,4 @@
-// Generated from c:\xampp\htdocs\antlr-compiler\Lang.g4 by ANTLR 4.9.2
+// Generated from c:\Users\carlo\OneDrive\Documentos\GitHub\antlr-compiler\Lang.g4 by ANTLR 4.9.2
 import org.antlr.v4.runtime.Lexer;
 import org.antlr.v4.runtime.CharStream;
 import org.antlr.v4.runtime.Token;

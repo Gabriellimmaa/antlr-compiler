@@ -482,6 +482,18 @@ public interface ILangListener : IParseTreeListener {
 	/// <param name="context">The parse tree.</param>
 	void ExitCondNot([NotNull] LangParser.CondNotContext context);
 	/// <summary>
+	/// Enter a parse tree produced by the <c>atribString</c>
+	/// labeled alternative in <see cref="LangParser.atrib"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	void EnterAtribString([NotNull] LangParser.AtribStringContext context);
+	/// <summary>
+	/// Exit a parse tree produced by the <c>atribString</c>
+	/// labeled alternative in <see cref="LangParser.atrib"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	void ExitAtribString([NotNull] LangParser.AtribStringContext context);
+	/// <summary>
 	/// Enter a parse tree produced by the <c>atribVar</c>
 	/// labeled alternative in <see cref="LangParser.atrib"/>.
 	/// </summary>
@@ -673,17 +685,5 @@ public interface ILangListener : IParseTreeListener {
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
 	void ExitFactorBoolFalse([NotNull] LangParser.FactorBoolFalseContext context);
-	/// <summary>
-	/// Enter a parse tree produced by the <c>factorStr</c>
-	/// labeled alternative in <see cref="LangParser.factor"/>.
-	/// </summary>
-	/// <param name="context">The parse tree.</param>
-	void EnterFactorStr([NotNull] LangParser.FactorStrContext context);
-	/// <summary>
-	/// Exit a parse tree produced by the <c>factorStr</c>
-	/// labeled alternative in <see cref="LangParser.factor"/>.
-	/// </summary>
-	/// <param name="context">The parse tree.</param>
-	void ExitFactorStr([NotNull] LangParser.FactorStrContext context);
 }
 } // namespace Grammar

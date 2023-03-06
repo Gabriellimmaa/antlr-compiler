@@ -28,6 +28,12 @@ namespace Interpreter.Lang
             Variables.Add(varName, varType);
         }
 
+        public override void ExitAtribString([NotNull] LangParser.AtribStringContext context)
+        {
+            var varName = context.VAR().GetText();
+            Variables.Add(varName, LangLexer.STR);
+        }
+
         public override void ExitOutputWriteVar([NotNull] LangParser.OutputWriteVarContext context)
         {
             var varName = context.VAR().GetText();

@@ -563,6 +563,20 @@ public partial class LangBaseListener : ILangListener {
 	/// <param name="context">The parse tree.</param>
 	public virtual void ExitCondNot([NotNull] LangParser.CondNotContext context) { }
 	/// <summary>
+	/// Enter a parse tree produced by the <c>atribString</c>
+	/// labeled alternative in <see cref="LangParser.atrib"/>.
+	/// <para>The default implementation does nothing.</para>
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	public virtual void EnterAtribString([NotNull] LangParser.AtribStringContext context) { }
+	/// <summary>
+	/// Exit a parse tree produced by the <c>atribString</c>
+	/// labeled alternative in <see cref="LangParser.atrib"/>.
+	/// <para>The default implementation does nothing.</para>
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	public virtual void ExitAtribString([NotNull] LangParser.AtribStringContext context) { }
+	/// <summary>
 	/// Enter a parse tree produced by the <c>atribVar</c>
 	/// labeled alternative in <see cref="LangParser.atrib"/>.
 	/// <para>The default implementation does nothing.</para>
@@ -786,20 +800,6 @@ public partial class LangBaseListener : ILangListener {
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
 	public virtual void ExitFactorBoolFalse([NotNull] LangParser.FactorBoolFalseContext context) { }
-	/// <summary>
-	/// Enter a parse tree produced by the <c>factorStr</c>
-	/// labeled alternative in <see cref="LangParser.factor"/>.
-	/// <para>The default implementation does nothing.</para>
-	/// </summary>
-	/// <param name="context">The parse tree.</param>
-	public virtual void EnterFactorStr([NotNull] LangParser.FactorStrContext context) { }
-	/// <summary>
-	/// Exit a parse tree produced by the <c>factorStr</c>
-	/// labeled alternative in <see cref="LangParser.factor"/>.
-	/// <para>The default implementation does nothing.</para>
-	/// </summary>
-	/// <param name="context">The parse tree.</param>
-	public virtual void ExitFactorStr([NotNull] LangParser.FactorStrContext context) { }
 
 	/// <inheritdoc/>
 	/// <remarks>The default implementation does nothing.</remarks>

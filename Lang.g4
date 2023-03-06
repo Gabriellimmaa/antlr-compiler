@@ -90,7 +90,8 @@
         ;
 
     atrib: 
-        TYPE=(INT|DOUBLE|STRING|BOOLEAN) VAR '=' expr             # atribVar
+        STRING VAR '=' STR                # atribString
+        | TYPE=(INT|DOUBLE|BOOLEAN) VAR '=' expr         # atribVar
         | VAR ATRIB_PLUS expr             # atribPlus
         | VAR ATRIB_MINUS expr             # atribMinus
         ;
@@ -115,7 +116,7 @@
         | NUM                   # factorNum
         | BOOL_TRUE             # factorBoolTrue
         | BOOL_FALSE            # factorBoolFalse
-        | STR                   # factorStr
+    //    | STR                   # factorStr
         ;
 
     // Lexical rules

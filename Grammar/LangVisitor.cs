@@ -296,6 +296,13 @@ public interface ILangVisitor<Result> : IParseTreeVisitor<Result> {
 	/// <return>The visitor result.</return>
 	Result VisitCondNot([NotNull] LangParser.CondNotContext context);
 	/// <summary>
+	/// Visit a parse tree produced by the <c>atribString</c>
+	/// labeled alternative in <see cref="LangParser.atrib"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	/// <return>The visitor result.</return>
+	Result VisitAtribString([NotNull] LangParser.AtribStringContext context);
+	/// <summary>
 	/// Visit a parse tree produced by the <c>atribVar</c>
 	/// labeled alternative in <see cref="LangParser.atrib"/>.
 	/// </summary>
@@ -407,12 +414,5 @@ public interface ILangVisitor<Result> : IParseTreeVisitor<Result> {
 	/// <param name="context">The parse tree.</param>
 	/// <return>The visitor result.</return>
 	Result VisitFactorBoolFalse([NotNull] LangParser.FactorBoolFalseContext context);
-	/// <summary>
-	/// Visit a parse tree produced by the <c>factorStr</c>
-	/// labeled alternative in <see cref="LangParser.factor"/>.
-	/// </summary>
-	/// <param name="context">The parse tree.</param>
-	/// <return>The visitor result.</return>
-	Result VisitFactorStr([NotNull] LangParser.FactorStrContext context);
 }
 } // namespace Grammar

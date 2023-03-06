@@ -20,6 +20,16 @@ namespace Interpreter.Lang
 
         public Dictionary<string, object?> Variables {get; protected set;} = new Dictionary<string, object?>();
 
+        struct Valuable{ 
+            public int type;
+            public object? value;
+
+            public Valuable(int _type, object? _value) {
+                type = _type;
+                value = _value;
+            }
+        }
+
         #region I/O Statements
 
         public override object? VisitInputRead([NotNull] LangParser.InputReadContext context)
@@ -105,8 +115,19 @@ namespace Interpreter.Lang
         public override object? VisitAtribVar([NotNull] LangParser.AtribVarContext context)
         {
             var varName = context.VAR().GetText();
-            object? v = Visit(context.expr());
-            Variables[varName] = v;
+            var varType = context.TYPE.Type;
+            Valuable v = new Valuable();
+            v = (Valuable)Visit(context.expr());
+            
+            Variables[varName] = v.value;
+            return null;
+        }
+
+        public override object VisitAtribString([NotNull] LangParser.AtribStringContext context)
+        {
+            var varName = context.VAR().GetText();
+            var  varContent = context.STR().GetText().Replace("\"", string.Empty);;
+            Variables[varName] = varContent;
             return null;
         }
 
@@ -179,7 +200,7 @@ namespace Interpreter.Lang
         public override object? VisitFactorNum([NotNull] LangParser.FactorNumContext context)
         {
             var txtNum = context.NUM().GetText();
-            return Double.Parse(txtNum);
+            return new Valuable(LangLexer.DOUBLE, Double.Parse(txtNum));
         }
 
         public override object? VisitFactorExpr([NotNull] LangParser.FactorExprContext context)
@@ -187,10 +208,10 @@ namespace Interpreter.Lang
             return Visit(context.expr());
         }
 
-        public override object VisitFactorStr([NotNull] LangParser.FactorStrContext context)
+        /*public override object VisitFactorStr([NotNull] LangParser.FactorStrContext context)
         {
             return context.STR().GetText().Replace("\"", string.Empty);
-        }
+        }*/
 
         #endregion
 
