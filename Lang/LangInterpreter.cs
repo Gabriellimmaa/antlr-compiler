@@ -425,7 +425,7 @@ namespace Interpreter.Lang
         public override object? VisitFactorNum([NotNull] LangParser.FactorNumContext context)
         {
             var txtNum = context.NUM().GetText();
-            return new Valuable(LangLexer.INT, Int32.Parse(txtNum));
+            return Int32.Parse(txtNum);
         }
 
         public override object? VisitFactorDecim([NotNull] LangParser.FactorDecimContext context)
