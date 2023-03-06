@@ -317,6 +317,39 @@ namespace Interpreter.Lang
             var varName = context.VAR().GetText();
             var varType = context.TYPE.Type;
             var varValue = Visit(context.expr());
+            if (varType == LangLexer.INT && varValue is not int)
+            {
+                Console.WriteLine("Variable " + varName + " is not of type int");
+                return null;
+            }
+            if (varType == LangLexer.DOUBLE && varValue is not double)
+            {
+                Console.WriteLine("Variable " + varName + " is not of type double");
+                return null;
+            }
+            if (varType == LangLexer.BOOLEAN)
+            {
+                bool result;
+                try
+                {
+                    if (bool.TryParse((string)varValue, out result))
+                    {
+                        var aux = new Valuable(varType, varValue);
+                        Variables[varName] = aux;
+                        return null;
+                    }
+                    else
+                    {
+                        Console.WriteLine("Variable " + varName + " is not of type boolean");
+                    }
+                }
+                catch
+                {
+                    Console.WriteLine("Variable " + varName + " is not of type boolean");
+                }
+                return null;
+            }
+
             var vStruct = new Valuable(varType, varValue);
             Variables[varName] = vStruct;
             return null;
@@ -432,6 +465,18 @@ namespace Interpreter.Lang
         {
             var txtNum = context.DECIM().GetText();
             return Double.Parse(txtNum, CultureInfo.InvariantCulture);
+        }
+
+        public override object? VisitFactorBoolTrue([NotNull] LangParser.FactorBoolTrueContext context)
+        {
+            var txtNum = context.BOOL_TRUE().GetText();
+            return txtNum;
+        }
+
+        public override object? VisitFactorBoolFalse([NotNull] LangParser.FactorBoolFalseContext context)
+        {
+            var txtNum = context.BOOL_FALSE().GetText();
+            return txtNum;
         }
 
         // public override object VisitFactorDecim([NotNull] LangParser.FactorDecimContext context)

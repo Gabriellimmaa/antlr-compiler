@@ -157,8 +157,8 @@
     LE : '<=';
     GE : '>=';
     NE : '!=';
-    BOOL_TRUE: 'true';
-    BOOL_FALSE: 'false';
+    BOOL_TRUE: [Tt][Rr][Uu][Ee];
+    BOOL_FALSE: [Ff][Aa][Ll][Ss][Ee];
     IF: [iI][fF];
     WHILE:[wW][hH][iI][lL][eE];
     FOR:[fF][oO][rR];
