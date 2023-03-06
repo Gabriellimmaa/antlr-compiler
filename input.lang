@@ -1,2 +1,57 @@
-string teste = "hello della";
-write teste;
+/* 
+regra para comentarios em bloco
+/*
+
+// regra para comentarios em linha
+
+// regra de atribuicao para int, double, string, boolean
+//int teste_int = (10+5)/2;
+int teste_int = 1;
+write f"teste_int: ${teste_int}";
+string teste_string = "hello della";
+
+// regra para concatenar variaveis a string
+write f"concatenando variavel ${teste_int} dentro de uma string ${teste_string}";
+
+// regra para atribuir valor a uma variavel existente
+teste_int += 1;
+write f"teste_int contém valor ${teste_int}";
+teste_int -= 1;
+write f"teste_int contém valor ${teste_int}";
+
+// regra laço de repetição WHILE
+while (teste_int < 10) {
+    write f"WHILE teste_int: ${teste_int}";
+    teste_int += 2;
+}
+
+// regra laço de repetição FOR
+for(teste_int;teste_int < 20;teste_int += 1) {
+    write f"FOR ${teste_int}";
+}
+
+write f"teste_int: ${teste_int}";
+
+// regra de condição com IF
+if(teste_int > 10) {
+    write "IF teste_int é maior que 10";
+}else{
+    write "IF teste_int NÃO é maior que 10";
+}
+
+teste_int -= 10;
+write f"teste_int: ${teste_int}";
+
+// regra ternária
+teste_int > 10 ? "TERNÁRIA teste_int é maior que 10" : "TERNÁRIA teste_int NÃO é maior que 10";
+
+/
+while
+for
+ternaria
+concatenacao var e string
+atribuicao += e -= para variaveis
+comentario de codigo em linha e bloco
+codições
+if e if else
+*/
