@@ -5,14 +5,10 @@
       "Antlr4.Runtime.Standard/4.9.2": {
         "type": "package",
         "compile": {
-          "lib/netstandard2.0/Antlr4.Runtime.Standard.dll": {
-            "related": ".xml"
-          }
+          "lib/netstandard2.0/Antlr4.Runtime.Standard.dll": {}
         },
         "runtime": {
-          "lib/netstandard2.0/Antlr4.Runtime.Standard.dll": {
-            "related": ".xml"
-          }
+          "lib/netstandard2.0/Antlr4.Runtime.Standard.dll": {}
         }
       }
     }
@@ -38,24 +34,31 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\carlo\\.nuget\\packages\\": {}
+    "C:\\Users\\limaamaro\\.nuget\\packages\\": {},
+    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\carlo\\OneDrive\\Documentos\\GitHub\\antlr-compiler\\the-interpreter-101.csproj",
+      "projectUniqueName": "C:\\xampp\\htdocs\\antlr-compiler\\the-interpreter-101.csproj",
       "projectName": "the-interpreter-101",
-      "projectPath": "C:\\Users\\carlo\\OneDrive\\Documentos\\GitHub\\antlr-compiler\\the-interpreter-101.csproj",
-      "packagesPath": "C:\\Users\\carlo\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\carlo\\OneDrive\\Documentos\\GitHub\\antlr-compiler\\obj\\",
+      "projectPath": "C:\\xampp\\htdocs\\antlr-compiler\\the-interpreter-101.csproj",
+      "packagesPath": "C:\\Users\\limaamaro\\.nuget\\packages\\",
+      "outputPath": "C:\\xampp\\htdocs\\antlr-compiler\\obj\\",
       "projectStyle": "PackageReference",
+      "fallbackFolders": [
+        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+      ],
       "configFilePaths": [
-        "C:\\Users\\carlo\\AppData\\Roaming\\NuGet\\NuGet.Config"
+        "C:\\Users\\limaamaro\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
         "net6.0"
       ],
       "sources": {
+        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
@@ -85,8 +88,7 @@
           "net47",
           "net471",
           "net472",
-          "net48",
-          "net481"
+          "net48"
         ],
         "assetTargetFallback": true,
         "warn": true,
@@ -95,7 +97,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.402\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.309\\RuntimeIdentifierGraph.json"
       }
     }
   }
