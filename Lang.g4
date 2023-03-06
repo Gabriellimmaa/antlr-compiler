@@ -90,8 +90,9 @@
         ;
 
     atrib: 
-        STRING VAR '=' STR                # atribString
-        | TYPE=(INT|DOUBLE|BOOLEAN) VAR '=' expr         # atribVar
+        STRING VAR AT STR                # atribString
+        // | DOUBLE VAR AT DECIM               # atribDecim	
+        | TYPE=(INT|DOUBLE|BOOLEAN) VAR AT expr         # atribVar
         | VAR ATRIB_PLUS expr             # atribPlus
         | VAR ATRIB_MINUS expr             # atribMinus
         ;
