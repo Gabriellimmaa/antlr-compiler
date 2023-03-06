@@ -334,7 +334,7 @@ namespace Interpreter.Lang
         {
             var varName = context.VAR().GetText();
             var varContent = context.STR().GetText().Replace("\"", string.Empty); ;
-            Variables[varName] = varContent;
+            Variables[varName] = new Valuable(LangLexer.STRING, varContent);
             return null;
         }
 
