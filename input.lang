@@ -1,3 +1,5 @@
+read x int;
+write x;
 //array <string> teste = ["1","2","3"];
 array <int> teste = [1,2,3];
 //array <double> teste = [1.4,2.2,3.3];

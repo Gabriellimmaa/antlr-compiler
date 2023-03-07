@@ -64,18 +64,58 @@ namespace Interpreter.Lang
             if (type == LangLexer.INT)
             {
                 var y = 0;
-                if (int.TryParse(input, out y))
-                {
-                    Variables[context.VAR().GetText()] = y;
+                if (int.TryParse(input, out y)){
+                    Variables[context.VAR().GetText()] = new Valuable (LangLexer.INT, y);
                 }
-                else
-                {
-                    // matar a execução aqui
+                else{
+                    Console.WriteLine("Entrada inválida para tipo INT");
+                    Environment.Exit(0);
+                    return null;
                 }
             }
-            // if (!String.IsNullOrEmpty(input))
-            //     Variables[context.VAR().GetText()] = input;
-            return null;
+            if (type == LangLexer.BOOLEAN) {
+                var y = false;
+                if (Boolean.TryParse(input, out y)){
+                    Variables[context.VAR().GetText()] = new Valuable (LangLexer.BOOLEAN, y);
+                }
+                else{
+                    Console.WriteLine("Entrada inválida para tipo BOOLEAN");
+                    Environment.Exit(0);
+                    return null;
+                }
+            }
+            if (type == LangLexer.DOUBLE) {
+                double y=0.0;
+                if (double.TryParse(input, NumberStyles.AllowDecimalPoint, CultureInfo.InvariantCulture, out y)){
+                    if(!input.Contains(".")){
+                        Console.WriteLine("Entrada inválida para tipo DOUBLE");
+                        Environment.Exit(0);
+                    }
+                    else{
+                        Variables[context.VAR().GetText()] = new Valuable(LangLexer.DOUBLE, y);
+                    }
+                }
+                else{
+                    Console.WriteLine("Entrada inválida para tipo DOUBLE");
+                    Environment.Exit(0);
+                    return null;
+                }
+
+            }
+            if (type == LangLexer.STRING) {
+                var y = input;
+                if (!String.IsNullOrWhiteSpace(y)){
+                    Variables[context.VAR().GetText()] = new Valuable (LangLexer.STRING, y);
+                }
+                else{
+                    Console.WriteLine("Entrada inválida para tipo STRING");
+                    Environment.Exit(0);
+                    return null;
+                }
+            }
+
+
+        return null;
         }
 
         public override object? VisitOutputWriteVar([NotNull] LangParser.OutputWriteVarContext context)
