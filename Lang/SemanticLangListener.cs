@@ -34,11 +34,21 @@ namespace Interpreter.Lang
             Variables.Add(varName, LangLexer.STR);
         }
 
-        // public override void ExitAtribDecim([NotNull] LangParser.AtribDecimContext context)
-        // {
-        //     var varName = context.VAR().GetText();
-        //     Variables.Add(varName, LangLexer.DECIM);
-        // }
+        public override void ExitAtribArrayNumber([NotNull] LangParser.AtribArrayNumberContext context)
+        {
+            var varName = context.VAR().GetText();
+            var varType = context.TYPE.Type;
+            if(varType == LangLexer.INT)
+                Variables.Add(varName, LangLexer.ARRAY_INT);
+            if(varType == LangLexer.DOUBLE)
+                Variables.Add(varName, LangLexer.ARRAY_DOUBLE);
+        }
+
+        public override void ExitAtribArrayString([NotNull] LangParser.AtribArrayStringContext context)
+        {
+            var varName = context.VAR().GetText();
+            Variables.Add(varName, LangLexer.ARRAY_STRING);
+        }
 
 
         public override void ExitOutputWriteVar([NotNull] LangParser.OutputWriteVarContext context)

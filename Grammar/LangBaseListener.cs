@@ -227,6 +227,20 @@ public partial class LangBaseListener : ILangListener {
 	/// <param name="context">The parse tree.</param>
 	public virtual void ExitLineTernary([NotNull] LangParser.LineTernaryContext context) { }
 	/// <summary>
+	/// Enter a parse tree produced by the <c>lineArray</c>
+	/// labeled alternative in <see cref="LangParser.line"/>.
+	/// <para>The default implementation does nothing.</para>
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	public virtual void EnterLineArray([NotNull] LangParser.LineArrayContext context) { }
+	/// <summary>
+	/// Exit a parse tree produced by the <c>lineArray</c>
+	/// labeled alternative in <see cref="LangParser.line"/>.
+	/// <para>The default implementation does nothing.</para>
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	public virtual void ExitLineArray([NotNull] LangParser.LineArrayContext context) { }
+	/// <summary>
 	/// Enter a parse tree produced by the <c>lineEOL</c>
 	/// labeled alternative in <see cref="LangParser.line"/>.
 	/// <para>The default implementation does nothing.</para>
@@ -479,6 +493,34 @@ public partial class LangBaseListener : ILangListener {
 	/// <param name="context">The parse tree.</param>
 	public virtual void ExitForstFor([NotNull] LangParser.ForstForContext context) { }
 	/// <summary>
+	/// Enter a parse tree produced by the <c>atribArrayNumber</c>
+	/// labeled alternative in <see cref="LangParser.array"/>.
+	/// <para>The default implementation does nothing.</para>
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	public virtual void EnterAtribArrayNumber([NotNull] LangParser.AtribArrayNumberContext context) { }
+	/// <summary>
+	/// Exit a parse tree produced by the <c>atribArrayNumber</c>
+	/// labeled alternative in <see cref="LangParser.array"/>.
+	/// <para>The default implementation does nothing.</para>
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	public virtual void ExitAtribArrayNumber([NotNull] LangParser.AtribArrayNumberContext context) { }
+	/// <summary>
+	/// Enter a parse tree produced by the <c>atribArrayString</c>
+	/// labeled alternative in <see cref="LangParser.array"/>.
+	/// <para>The default implementation does nothing.</para>
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	public virtual void EnterAtribArrayString([NotNull] LangParser.AtribArrayStringContext context) { }
+	/// <summary>
+	/// Exit a parse tree produced by the <c>atribArrayString</c>
+	/// labeled alternative in <see cref="LangParser.array"/>.
+	/// <para>The default implementation does nothing.</para>
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	public virtual void ExitAtribArrayString([NotNull] LangParser.AtribArrayStringContext context) { }
+	/// <summary>
 	/// Enter a parse tree produced by the <c>blockLine</c>
 	/// labeled alternative in <see cref="LangParser.block"/>.
 	/// <para>The default implementation does nothing.</para>
@@ -716,6 +758,34 @@ public partial class LangBaseListener : ILangListener {
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
 	public virtual void ExitTermFactor([NotNull] LangParser.TermFactorContext context) { }
+	/// <summary>
+	/// Enter a parse tree produced by the <c>array_number</c>
+	/// labeled alternative in <see cref="LangParser.factor_array_number"/>.
+	/// <para>The default implementation does nothing.</para>
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	public virtual void EnterArray_number([NotNull] LangParser.Array_numberContext context) { }
+	/// <summary>
+	/// Exit a parse tree produced by the <c>array_number</c>
+	/// labeled alternative in <see cref="LangParser.factor_array_number"/>.
+	/// <para>The default implementation does nothing.</para>
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	public virtual void ExitArray_number([NotNull] LangParser.Array_numberContext context) { }
+	/// <summary>
+	/// Enter a parse tree produced by the <c>array_string</c>
+	/// labeled alternative in <see cref="LangParser.factor_array_string"/>.
+	/// <para>The default implementation does nothing.</para>
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	public virtual void EnterArray_string([NotNull] LangParser.Array_stringContext context) { }
+	/// <summary>
+	/// Exit a parse tree produced by the <c>array_string</c>
+	/// labeled alternative in <see cref="LangParser.factor_array_string"/>.
+	/// <para>The default implementation does nothing.</para>
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	public virtual void ExitArray_string([NotNull] LangParser.Array_stringContext context) { }
 	/// <summary>
 	/// Enter a parse tree produced by the <c>factorExpr</c>
 	/// labeled alternative in <see cref="LangParser.factor"/>.
