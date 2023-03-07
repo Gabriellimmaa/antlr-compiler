@@ -1,57 +1,138 @@
 /* 
 regra para comentarios em bloco
-/*
+*/
 
 // regra para comentarios em linha
 
-// regra de atribuicao para int, double, string, boolean
-//int teste_int = (10+5)/2;
-int teste_int = 1;
-write f"teste_int: ${teste_int}";
-string teste_string = "hello della";
 
-// regra para concatenar variaveis a string
-write f"concatenando variavel ${teste_int} dentro de uma string ${teste_string}";
+// regra de atribuicao para int, double, string, boolean
+
+/*
+int x = 1;
+write x;
+double y = 1.5;
+write y;
+string z = "Della Lindo";
+write z;
+boolean b = true;
+write b;
+*/
+
+// teste de erro para a regra de atribuicao para int, double, string, boolean 
+
+
+//int x1 = 1.5;
+//write x1;
+//double y1 = 1;
+//write y1;
+//string z1 = 2;
+//write z1;
+//boolean b1 = 2;
+//write b1;
+
+
+// usando read para declarar variavel int, double, string, boolean
+
+/*
+read x2 int;
+write x2;
+read y2 double;
+write y2;
+read z2 string;;
+write z2;
+read b2 boolean;
+write b2;
+*/
+
+// calculos basicos com int e double
+
+/*
+int x3 = 2 + 2;
+write x3;
+int y3 = 2.5 - 2.1;
+write y3;
+int z3 = 2 * 2;
+write z3;
+int a3 = 7 / 2;
+write a3;
+int b3 = 2 + 2 + 2;
+write b3;
+int c3 = ( 2 + 2.5 ) * 2;
+write c3;
+*/
 
 // regra para atribuir valor a uma variavel existente
-teste_int += 1;
-write f"teste_int contém valor ${teste_int}";
-teste_int -= 1;
-write f"teste_int contém valor ${teste_int}";
 
-// regra laço de repetição WHILE
-while (teste_int < 10) {
-    write f"WHILE teste_int: ${teste_int}";
-    teste_int += 2;
-}
+/*
+int x4 = 2;
+x4 += 1;
+write f"teste_int contém valor ${x4}";
+x4 -= 1;
+write f"teste_int contém valor ${x4}";
+*/
 
-// regra laço de repetição FOR
-for(teste_int;teste_int < 20;teste_int += 1) {
-    write f"FOR ${teste_int}";
-}
+// regra de condição com IF e ELSE
 
-write f"teste_int: ${teste_int}";
-
-// regra de condição com IF
+/*
+int teste_int = 11;
 if(teste_int > 10) {
     write "IF teste_int é maior que 10";
 }else{
     write "IF teste_int NÃO é maior que 10";
 }
+*/
 
-teste_int -= 10;
+// regra laço de repetição FOR
+
+/*
+int teste_int = 2;
+for(teste_int;teste_int < 20;teste_int += 1) {
+    write f"FOR ${teste_int}";
+};
+*/
+
+// regra laço de repetição WHILE
+
+/*
+int teste_int = 2;
+while (teste_int < 10) {
+    write f"WHILE teste_int: ${teste_int}";
+    teste_int += 2;
+};
+*/
+
+// concatenação
+
+/*
+int teste_int = 2;
 write f"teste_int: ${teste_int}";
+*/
+
+// regra para concatenar variaveis a string
+
+/*
+int teste_int = 100;
+string teste_string = "Nota q o Della vai me dar";
+write f"concatenando variavel ${teste_int} dentro de uma string ${teste_string}";
+*/
 
 // regra ternária
-teste_int > 10 ? "TERNÁRIA teste_int é maior que 10" : "TERNÁRIA teste_int NÃO é maior que 10";
 
-/
-while
-for
-ternaria
-concatenacao var e string
-atribuicao += e -= para variaveis
-comentario de codigo em linha e bloco
-codições
-if e if else
+/*
+int teste_int = 11;
+teste_int > 10 ? "TERNÁRIA teste_int é maior que 10" : "TERNÁRIA teste_int NÃO é maior que 10";
+*/
+
+// atribuição e chamada de array com posições
+
+/*
+array <string> teste1 = ["1","2","3"];
+write teste1;
+write teste1[0];
+array <int> teste2 = [1,2,3];
+write teste2;
+write teste2[1];
+array <double> teste3 = [1.4,2.2,3.3];
+write teste3;
+write teste3[2];
 */
