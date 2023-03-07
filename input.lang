@@ -1,2 +1,2 @@
-double teste = 2.1 + 2.1 + 2;
-write teste;
+read x int;
+write x;
