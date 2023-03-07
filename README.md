@@ -25,6 +25,15 @@ Para compilar o compilador, siga os seguintes passos:
 Para executar o compilador, digite o comando `java -jar antlr4-4.9.2-complete.jar -Dlanguage=CSharp -visitor -package Grammar -o Grammar Lang.g4` no terminal. Onde nome_do_arquivo_de_entrada é o nome do arquivo que contém o código fonte da linguagem definida pela gramática do compilador.
 
 # Exemplos
+
+comtário de código
+```
+/* 
+regra para comentarios em bloco
+*/
+
+// regra para comentarios em linha
+```
 atribuicao de variaveis
 ```
 int x = 1;
