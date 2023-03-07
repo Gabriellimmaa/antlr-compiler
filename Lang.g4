@@ -101,6 +101,7 @@
         | TYPE=(INT|DOUBLE|BOOLEAN) VAR AT expr         # atribVar
         | VAR ATRIB_PLUS expr             # atribPlus
         | VAR ATRIB_MINUS expr             # atribMinus
+        | VAR ATRIB_MULT expr             # atribMult
         ;
 
     expr: 
@@ -145,6 +146,7 @@
     PLUS: '+';
     ATRIB_PLUS: '+=';
     ATRIB_MINUS: '-=';
+    ATRIB_MULT: '*=';
     MINUS: '-';
     MULT: '*';
     DIV: '/';

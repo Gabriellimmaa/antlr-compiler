@@ -413,6 +413,31 @@ namespace Interpreter.Lang
             return null;
         }
 
+        public override object? VisitAtribMult([NotNull] LangParser.AtribMultContext context)
+        {
+            var varName = context.VAR().GetText();
+            if (!Variables.ContainsKey(varName))
+            {
+                Console.WriteLine("Variable " + varName + " is not defined");
+                return null;
+            }
+
+            var varStruct = (Valuable)Variables[varName];
+            var value = varStruct.GetValue();
+            var type = varStruct.GetType();
+            if (type == LangLexer.DECIM)
+            {
+                varStruct.SetValue((double)value * (double)Visit(context.expr()));
+            }
+            if (type == LangLexer.INT)
+            {
+                varStruct.SetValue((int)value * (int)Visit(context.expr()));
+            }
+            Variables[varName] = varStruct;
+            return null;
+        }
+
+
         public override object VisitExprPlus([NotNull] LangParser.ExprPlusContext context)
         {
             var d = GetDoubles(context.term(), context.expr());
