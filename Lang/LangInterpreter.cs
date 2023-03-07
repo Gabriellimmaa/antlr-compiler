@@ -431,7 +431,7 @@ namespace Interpreter.Lang
             }
             if (type == LangLexer.INT)
             {
-                varStruct.SetValue((int)value * (int)Visit(context.expr()));
+                varStruct.SetValue((int)value * (int)((Valuable)Visit(context.expr())).GetValue());
             }
             Variables[varName] = varStruct;
             return null;
