@@ -19,18 +19,20 @@ namespace Interpreter.Lang
             this._functions = functions;
         }
 
-        public Dictionary<string, object?> Variables {get; protected set;} = new Dictionary<string, object?>();
+        public Dictionary<string, object?> Variables { get; protected set; } = new Dictionary<string, object?>();
 
-        struct Valuable{ 
+        struct Valuable
+        {
             public int type;
             public object? value;
 
-            public Valuable(int _type, object? _value) {
+            public Valuable(int _type, object? _value)
+            {
                 type = _type;
                 value = _value;
             }
-            
-            
+
+
             public int GetType()
             {
                 return type;
@@ -59,11 +61,15 @@ namespace Interpreter.Lang
             var input = Console.ReadLine();
             var type = context.TYPE.Type;
 
-            if (type == LangLexer.INT) {
+            if (type == LangLexer.INT)
+            {
                 var y = 0;
-                if (int.TryParse(input, out y)){
-                     Variables[context.VAR().GetText()] = y;
-                } else {
+                if (int.TryParse(input, out y))
+                {
+                    Variables[context.VAR().GetText()] = y;
+                }
+                else
+                {
                     // matar a execução aqui
                 }
             }
@@ -75,8 +81,95 @@ namespace Interpreter.Lang
         public override object? VisitOutputWriteVar([NotNull] LangParser.OutputWriteVarContext context)
         {
             var varName = context.VAR().GetText();
-            if (Variables.ContainsKey(varName)){
-                Console.WriteLine(((Valuable)Variables[varName]).GetValue());
+            if (Variables.ContainsKey(varName))
+            {
+                var varStruct = (Valuable)Variables[varName];
+                if (context.POSITION() != null)
+                {
+                    var position = Int32.Parse(context.POSITION().GetText().Replace("[", "").Replace("]", ""));
+                    try
+                    {
+                        if (varStruct.GetType() == LangLexer.ARRAY_INT)
+                        {
+                            var auxList = (List<int>)varStruct.GetValue();
+                            Console.Write(auxList[position]);
+                            return null;
+                        }
+                        if (varStruct.GetType() == LangLexer.ARRAY_STRING)
+                        {
+                            var auxList = (List<string>)varStruct.GetValue();
+                            Console.Write(auxList[position]);
+                            return null;
+                        }
+                        if (varStruct.GetType() == LangLexer.ARRAY_DOUBLE)
+                        {
+                            var auxList = (List<double>)varStruct.GetValue();
+                            Console.Write(auxList[position]);
+                            return null;
+                        }
+                    }
+                    catch
+                    {
+                        Console.WriteLine("Array " + varName + " index was out of range");
+                        return null;
+                    }
+                }
+                else
+                {
+
+                    if (varStruct.GetType() == LangLexer.ARRAY_INT)
+                    {
+                        Console.Write('[');
+                        int index = 0;
+                        var auxList = (List<int>)varStruct.GetValue();
+                        foreach (var item in auxList)
+                        {
+                            Console.Write(item);
+                            if (index != auxList.Count - 1)
+                            {
+                                Console.Write(" | ");
+                            }
+                            index++;
+                        }
+                        Console.Write(']');
+                        return null;
+                    }
+                    if (varStruct.GetType() == LangLexer.ARRAY_STRING)
+                    {
+                        Console.Write('[');
+                        int index = 0;
+                        var auxList = (List<string>)varStruct.GetValue();
+                        foreach (string item in auxList)
+                        {
+                            Console.Write(item);
+                            if (index != auxList.Count - 1)
+                            {
+                                Console.Write(" | ");
+                            }
+                            index++;
+                        }
+                        Console.Write(']');
+                        return null;
+                    }
+                    if (varStruct.GetType() == LangLexer.ARRAY_DOUBLE)
+                    {
+                        Console.Write('[');
+                        int index = 0;
+                        var auxList = (List<double>)varStruct.GetValue();
+                        foreach (double item in auxList)
+                        {
+                            Console.Write(item);
+                            if (index != auxList.Count - 1)
+                            {
+                                Console.Write(" | ");
+                            }
+                            index++;
+                        }
+                        Console.Write(']');
+                        return null;
+                    }
+                }
+                Console.WriteLine(varStruct.GetType());
             }
             else
                 Console.WriteLine("Variable " + varName + " is not defined");
@@ -113,14 +206,15 @@ namespace Interpreter.Lang
                 var varName = match.Groups[1].Value;
                 if (Variables.ContainsKey(varName))
                     blocks.Add(Variables[varName].ToString());
-                else {
+                else
+                {
                     Console.WriteLine("Variable " + varName + " is not defined");
                     return null;
                 }
             }
             string mensagemFormatada = String.Format(strContent, blocks.ToArray());
             Console.WriteLine(mensagemFormatada.Replace("\"", ""));
-           
+
             return null;
         }
         #endregion
@@ -130,19 +224,26 @@ namespace Interpreter.Lang
         {
             var t1 = Visit(tree1);
             var t2 = Visit(tree2);
-            if(t1 is Valuable && t2 is Valuable) {
+            if (t1 is Valuable && t2 is Valuable)
+            {
                 Double.TryParse(((Valuable)t1).GetValue().ToString(), out var d1);
                 Double.TryParse(((Valuable)t2).GetValue().ToString(), out var d2);
                 return (d1, d2);
-            }else if (t1 is Valuable && t2 is not Valuable) {
+            }
+            else if (t1 is Valuable && t2 is not Valuable)
+            {
                 Double.TryParse(((Valuable)t1).GetValue().ToString(), out var d1);
                 Double.TryParse(t2.ToString(), out var d2);
                 return (d1, d2);
-            }else if (t1 is not Valuable && t2 is Valuable) {
+            }
+            else if (t1 is not Valuable && t2 is Valuable)
+            {
                 Double.TryParse(t1.ToString(), out var d1);
                 Double.TryParse(((Valuable)t2).GetValue().ToString(), out var d2);
                 return (d1, d2);
-            }else {
+            }
+            else
+            {
                 Double.TryParse(t1.ToString(), out var d1);
                 Double.TryParse(t2.ToString(), out var d2);
                 return (d1, d2);
@@ -163,11 +264,13 @@ namespace Interpreter.Lang
             var varName = context.VAR().GetText();
             var varType = context.TYPE.Type;
             var varValue = Visit(context.expr());
-            if(varType == LangLexer.DOUBLE) {
+            if (varType == LangLexer.DOUBLE)
+            {
                 var vStruct = new Valuable(varType, varValue);
                 Variables[varName] = vStruct;
             }
-            if(varType == LangLexer.INT) {
+            if (varType == LangLexer.INT)
+            {
                 var vStruct = new Valuable(varType, varValue);
                 Variables[varName] = vStruct;
             }
@@ -177,7 +280,7 @@ namespace Interpreter.Lang
         public override object VisitAtribString([NotNull] LangParser.AtribStringContext context)
         {
             var varName = context.VAR().GetText();
-            var  varContent = context.STR().GetText().Replace("\"", string.Empty);;
+            var varContent = context.STR().GetText().Replace("\"", string.Empty); ;
             Variables[varName] = varContent;
             return null;
         }
@@ -185,7 +288,8 @@ namespace Interpreter.Lang
         public override object? VisitAtribPlus([NotNull] LangParser.AtribPlusContext context)
         {
             var varName = context.VAR().GetText();
-            if(!Variables.ContainsKey(varName)){
+            if (!Variables.ContainsKey(varName))
+            {
                 Console.WriteLine("Variable " + varName + " is not defined");
                 return null;
             }
@@ -193,10 +297,12 @@ namespace Interpreter.Lang
             var varStruct = (Valuable)Variables[varName];
             var value = varStruct.GetValue();
             var type = varStruct.GetType();
-            if(type == LangLexer.DECIM) {
+            if (type == LangLexer.DECIM)
+            {
                 varStruct.SetValue((double)value + (double)Visit(context.expr()));
             }
-            if(type == LangLexer.INT) {
+            if (type == LangLexer.INT)
+            {
                 int value1 = (int)((Valuable)Visit(context.expr())).GetValue();
                 int value2 = (int)value;
                 int result = value1 + value2;
@@ -208,9 +314,12 @@ namespace Interpreter.Lang
         public override object? VisitAtribMinus([NotNull] LangParser.AtribMinusContext context)
         {
             var varName = context.VAR().GetText();
-            if(Variables.ContainsKey(varName)){
+            if (Variables.ContainsKey(varName))
+            {
                 Variables[varName] = (double)Variables[varName] - (double)Visit(context.expr());
-            }else {
+            }
+            else
+            {
                 Console.WriteLine("Variable " + varName + " is not defined");
             }
             return null;
@@ -300,10 +409,11 @@ namespace Interpreter.Lang
             return null;
         }
 
-        public override object VisitForstFor([NotNull] LangParser.ForstForContext context)
+        public override object? VisitForstFor([NotNull] LangParser.ForstForContext context)
         {
             var varName = context.VAR().GetText();
-            if(Variables.ContainsKey(varName)){
+            if (Variables.ContainsKey(varName))
+            {
                 var cond = Visit(context.cond());
                 while (cond != null && (bool)cond)
                 {
@@ -311,13 +421,15 @@ namespace Interpreter.Lang
                     Visit(context.atrib());
                     cond = Visit(context.cond());
                 }
-            }else {
+            }
+            else
+            {
                 Console.WriteLine("Variable " + varName + " is not defined");
             }
             return null;
         }
 
-        public override object VisitWhilestWhile([NotNull] LangParser.WhilestWhileContext context)
+        public override object? VisitWhilestWhile([NotNull] LangParser.WhilestWhileContext context)
         {
             var cond = Visit(context.cond());
             while (cond != null && (bool)cond)
@@ -327,6 +439,53 @@ namespace Interpreter.Lang
             }
             return null;
         }
+
+        public override object? VisitAtribArrayNumber([NotNull] LangParser.AtribArrayNumberContext context)
+        {
+            var varName = context.VAR().GetText();
+            var varValue = context.factor_array_number().GetText();
+            var varType = context.TYPE.Type;
+            if (Variables.ContainsKey(varName))
+            {
+                Console.WriteLine("Variable " + varName + " is already defined");
+            }
+            else
+            {
+                if (varType == LangLexer.INT)
+                {
+                    List<int> intList = varValue.Trim('[', ']').Split(',')
+                    .Select(int.Parse)
+                    .ToList();
+                    Variables[varName] = new Valuable(LangLexer.ARRAY_INT, intList);
+                }
+                if (varType == LangLexer.DOUBLE)
+                {
+                    List<double> doubleList = varValue.Trim('[', ']').Split(',')
+                    .Select(s => double.Parse(s, System.Globalization.CultureInfo.GetCultureInfo("en-US")))
+                    .ToList();
+                    Variables[varName] = new Valuable(LangLexer.ARRAY_DOUBLE, doubleList);
+                }
+            }
+            return null;
+        }
+
+        public override object? VisitAtribArrayString([NotNull] LangParser.AtribArrayStringContext context)
+        {
+            var varName = context.VAR().GetText();
+            var varValue = context.factor_array_string().GetText();
+            if (Variables.ContainsKey(varName))
+            {
+                Console.WriteLine("Variable " + varName + " is already defined");
+            }
+            else
+            {
+                List<string> list = varValue.Trim('[', ']').Split(',')
+                .ToList();
+                Variables[varName] = new Valuable(LangLexer.ARRAY_STRING, list);
+            }
+            return null;
+        }
+
 
         public override object? VisitIfstIfElse([NotNull] LangParser.IfstIfElseContext context)
         {
@@ -341,20 +500,24 @@ namespace Interpreter.Lang
         public override object VisitTernaryCond([NotNull] LangParser.TernaryCondContext context)
         {
             var cond = Visit(context.cond());
-            if (cond != null && (bool)cond) {
+            if (cond != null && (bool)cond)
+            {
                 string? str = context.e1.ToString();
                 string pattern = "\"([^\"]*)\"";
                 Match match = Regex.Match(str, pattern);
-                if (match.Success) {
+                if (match.Success)
+                {
                     string result = match.Groups[1].Value;
                     Console.WriteLine(result);
                 }
             }
-            else{
+            else
+            {
                 string? str = context.e2.ToString();
                 string pattern = "\"([^\"]*)\"";
                 Match match = Regex.Match(str, pattern);
-                if (match.Success) {
+                if (match.Success)
+                {
                     string result = match.Groups[1].Value;
                     Console.WriteLine(result);
                 }
@@ -364,7 +527,7 @@ namespace Interpreter.Lang
 
         public override object? VisitCondExpr([NotNull] LangParser.CondExprContext context)
         {
-            object? v = Visit(context.expr()); 
+            object? v = Visit(context.expr());
             return v != null && (Double)v != 0;
         }
 
@@ -418,7 +581,8 @@ namespace Interpreter.Lang
             var funcName = context.VAR().GetText();
             var function = _functions[funcName];
 
-            if (function != null){
+            if (function != null)
+            {
                 return Visit(function);
             }
 
