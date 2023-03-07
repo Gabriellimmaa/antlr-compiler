@@ -317,16 +317,8 @@ namespace Interpreter.Lang
             var varName = context.VAR().GetText();
             var varType = context.TYPE.Type;
             var varValue = Visit(context.expr());
-            if (varType == LangLexer.DOUBLE)
-            {
-                var vStruct = new Valuable(varType, varValue);
-                Variables[varName] = vStruct;
-            }
-            if (varType == LangLexer.INT)
-            {
-                var vStruct = new Valuable(varType, varValue);
-                Variables[varName] = vStruct;
-            }
+            var vStruct = new Valuable(varType, varValue);
+            Variables[varName] = vStruct;
             return null;
         }
 
@@ -439,7 +431,7 @@ namespace Interpreter.Lang
         public override object? VisitFactorDecim([NotNull] LangParser.FactorDecimContext context)
         {
             var txtNum = context.DECIM().GetText();
-            return new Valuable(LangLexer.INT, Double.Parse(txtNum, CultureInfo.InvariantCulture));
+            return Double.Parse(txtNum, CultureInfo.InvariantCulture);
         }
 
         // public override object VisitFactorDecim([NotNull] LangParser.FactorDecimContext context)
