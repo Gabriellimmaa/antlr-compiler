@@ -320,12 +320,12 @@ namespace Interpreter.Lang
             if (varType == LangLexer.INT && varValue is not int)
             {
                 Console.WriteLine("Variable " + varName + " is not of type int");
-                return null;
+                Environment.Exit(0);
             }
             if (varType == LangLexer.DOUBLE && varValue is not double)
             {
                 Console.WriteLine("Variable " + varName + " is not of type double");
-                return null;
+                Environment.Exit(0);
             }
             if (varType == LangLexer.BOOLEAN)
             {
@@ -341,11 +341,13 @@ namespace Interpreter.Lang
                     else
                     {
                         Console.WriteLine("Variable " + varName + " is not of type boolean");
+                        Environment.Exit(0);
                     }
                 }
                 catch
                 {
                     Console.WriteLine("Variable " + varName + " is not of type boolean");
+                    Environment.Exit(0);
                 }
                 return null;
             }
