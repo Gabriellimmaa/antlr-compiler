@@ -83,6 +83,8 @@ x4 += 1;
 write f"teste_int contém valor ${x4}";
 x4 -= 1;
 write f"teste_int contém valor ${x4}";
+x4 *= 3;
+write f"teste_int contém valor ${x4}";
 ```
 IF e IF ELSE
 ```
