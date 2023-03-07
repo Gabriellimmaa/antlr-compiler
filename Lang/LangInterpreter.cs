@@ -258,7 +258,7 @@ namespace Interpreter.Lang
                 i++;
                 var varName = match.Groups[1].Value;
                 if (Variables.ContainsKey(varName))
-                    blocks.Add(Variables[varName].ToString());
+                    blocks.Add(((Valuable)Variables[varName]).GetValue().ToString());
                 else
                 {
                     Console.WriteLine("Variable " + varName + " is not defined");
