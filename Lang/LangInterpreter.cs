@@ -145,19 +145,19 @@ namespace Interpreter.Lang
                         if (varStruct.GetType() == LangLexer.ARRAY_INT)
                         {
                             var auxList = (List<int>)varStruct.GetValue();
-                            Console.Write(auxList[position]);
+                            Console.WriteLine(auxList[position]);
                             return null;
                         }
                         if (varStruct.GetType() == LangLexer.ARRAY_STRING)
                         {
                             var auxList = (List<string>)varStruct.GetValue();
-                            Console.Write(auxList[position]);
+                            Console.WriteLine(auxList[position]);
                             return null;
                         }
                         if (varStruct.GetType() == LangLexer.ARRAY_DOUBLE)
                         {
                             var auxList = (List<double>)varStruct.GetValue();
-                            Console.Write(auxList[position]);
+                            Console.WriteLine(auxList[position]);
                             return null;
                         }
                     }
@@ -184,7 +184,7 @@ namespace Interpreter.Lang
                             }
                             index++;
                         }
-                        Console.Write(']');
+                        Console.Write("]\n");
                         return null;
                     }
                     if (varStruct.GetType() == LangLexer.ARRAY_STRING)
@@ -201,7 +201,7 @@ namespace Interpreter.Lang
                             }
                             index++;
                         }
-                        Console.Write(']');
+                        Console.Write("]\n");
                         return null;
                     }
                     if (varStruct.GetType() == LangLexer.ARRAY_DOUBLE)
@@ -218,7 +218,7 @@ namespace Interpreter.Lang
                             }
                             index++;
                         }
-                        Console.Write(']');
+                        Console.Write("]\n");
                         return null;
                     }
                 }
@@ -317,7 +317,7 @@ namespace Interpreter.Lang
             var varName = context.VAR().GetText();
             var varType = context.TYPE.Type;
             var varValue = Visit(context.expr());
-            if (varType == LangLexer.INT && varValue is not int)
+            if (varType == LangLexer.INT && varValue.ToString().Contains("."))
             {
                 Console.WriteLine("Variable " + varName + " is not of type int");
                 Environment.Exit(0);
