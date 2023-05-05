@@ -4,7 +4,7 @@
         ;
 
     functions: function functions
-            |// empty
+            |
             ;
     
     function: FUNCTION VAR '('params')' fnBlock;
